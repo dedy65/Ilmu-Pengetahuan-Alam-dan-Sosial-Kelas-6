@@ -1,0 +1,1 @@
+# Ilmu-Pengetahuan-Alam-dan-Sosial-Kelas-6
