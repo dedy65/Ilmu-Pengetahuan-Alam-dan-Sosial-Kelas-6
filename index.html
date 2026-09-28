@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materi Pembelajaran IPAS Kelas 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --text:#1e293b; --muted:#64748b; --card:#ffffff;
+  --card-border:rgba(148,163,184,.25);
+  --primary:#2563eb; --primary-dark:#1d4ed8;
+  --accent:#f59e0b; --accent-dark:#d97706;
+  --green:#10b981; --red:#ef4444;
+  --shadow:0 12px 32px rgba(30,58,138,.13);
+  --shadow-sm:0 4px 14px rgba(30,58,138,.10);
+  --chip:#eff6ff;
+  --body-bg:
+    radial-gradient(circle at 8% 8%, rgba(147,197,253,.75), transparent 42%),
+    radial-gradient(circle at 92% 12%, rgba(253,224,71,.65), transparent 40%),
+    radial-gradient(circle at 50% 102%, rgba(134,239,172,.65), transparent 45%),
+    #f6fbff;
+}
+body.dark{
+  --text:#e8eefc; --muted:#94a3b8; --card:#1e293b;
+  --card-border:rgba(148,163,184,.20);
+  --primary:#3b82f6; --primary-dark:#2563eb;
+  --accent:#fbbf24; --accent-dark:#f59e0b;
+  --shadow:0 12px 32px rgba(0,0,0,.5);
+  --shadow-sm:0 4px 14px rgba(0,0,0,.4);
+  --chip:#0f172a;
+  --body-bg:
+    radial-gradient(circle at 8% 8%, rgba(30,58,138,.85), transparent 42%),
+    radial-gradient(circle at 92% 12%, rgba(120,53,15,.7), transparent 40%),
+    radial-gradient(circle at 50% 102%, rgba(6,78,59,.8), transparent 45%),
+    #0b1220;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Nunito',system-ui,-apple-system,sans-serif;
+  color:var(--text); background-image:var(--body-bg);
+  background-attachment:fixed; min-height:100vh;
+  padding:18px 14px 48px;
+  transition:background-image .5s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.brand{font-family:'Baloo 2','Nunito',sans-serif;line-height:1.2;}
+
+.toggle-group{position:fixed;top:14px;right:14px;z-index:99;display:flex;gap:10px;}
+.theme-toggle{
+  width:48px;height:48px;border-radius:50%;
+  border:2px solid var(--card-border);
+  background:var(--card);color:var(--text);
+  font-size:1.25rem;cursor:pointer;
+  box-shadow:var(--shadow-sm);display:grid;place-items:center;
+  transition:transform .25s ease, box-shadow .25s ease, background .35s, color .35s;
+}
+.theme-toggle:hover{transform:scale(1.12) rotate(-8deg);box-shadow:var(--shadow);}
+.theme-toggle.music-on{background:linear-gradient(135deg,#a7f3d0,#34d399);color:#064e3b;animation:musicPulse 2s ease-in-out infinite;}
+@keyframes musicPulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.55);}50%{box-shadow:0 0 0 12px rgba(52,211,153,0);}}
+
+.view{display:none;}
+.view.active{display:block;animation:fadeUp .5s cubic-bezier(.22,1,.36,1);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.container{max-width:900px;margin:0 auto;}
+
+/* ============ COVER ============ */
+.cover{
+  min-height:calc(100vh - 40px);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(212,175,55,.20), transparent 60%),
+    linear-gradient(135deg, #000000 0%, #0d0a04 30%, #1a1408 50%, #0d0a04 70%, #000000 100%);
+  padding:30px 12px;
+  box-shadow:0 24px 60px rgba(0,0,0,.7);
+}
+.cover-pattern{
+  position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='batik' x='0' y='0' width='100' height='100' patternUnits='userSpaceOnUse'><g fill='none' stroke='%23d4af37' stroke-width='0.7'><circle cx='50' cy='50' r='8'/><circle cx='50' cy='50' r='16'/><circle cx='50' cy='50' r='24'/><path d='M50 26 L50 74 M26 50 L74 50 M33 33 L67 67 M33 67 L67 33'/><path d='M0 0 L10 10 M90 0 L100 10 M0 90 L10 100 M90 90 L100 100'/></g></pattern></defs><rect width='100%' height='100%' fill='url(%23batik)'/></svg>");
+}
+.cover-corner{position:absolute;width:120px;height:120px;z-index:2;pointer-events:none;opacity:.9;}
+.cover-corner svg{width:100%;height:100%;display:block;}
+.cover-corner.tl{top:14px;left:14px;}
+.cover-corner.tr{top:14px;right:14px;transform:scaleX(-1);}
+.cover-corner.bl{bottom:14px;left:14px;transform:scaleY(-1);}
+.cover-corner.br{bottom:14px;right:14px;transform:scale(-1,-1);}
+.cover::after{
+  content:"";position:absolute;inset:16px;
+  border:2px solid rgba(212,175,55,.65);
+  border-radius:20px;pointer-events:none;z-index:3;
+  box-shadow:inset 0 0 80px rgba(212,175,55,.20), inset 0 0 20px rgba(212,175,55,.30);
+}
+.cover-inner{
+  position:relative;z-index:4;max-width:760px;width:100%;
+  padding:50px 28px;text-align:center;
+  animation:popIn .9s cubic-bezier(.22,1.2,.36,1);
+}
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(30px);}to{opacity:1;transform:scale(1) translateY(0);}}
+
+.ornament-top{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px;}
+.ornament-line{height:2px;width:80px;background:linear-gradient(90deg, transparent, #d4af37, transparent);}
+.ornament-diamond{width:14px;height:14px;background:#d4af37;transform:rotate(45deg);box-shadow:0 0 14px rgba(212,175,55,.95), 0 0 28px rgba(212,175,55,.55);}
+.ornament-diamond.small{width:8px;height:8px;}
+
+.cover-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#d4af37,#b8860b);
+  color:#1a0505;font-weight:800;font-size:.78rem;
+  padding:8px 22px;border-radius:999px;margin-bottom:26px;
+  letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 4px 14px rgba(212,175,55,.55),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(0,0,0,.3);
+  text-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+.cover-title{
+  font-family:'Cinzel','Baloo 2',serif;
+  font-size:clamp(1.6rem,5vw,2.8rem);font-weight:800;
+  letter-spacing:.05em;line-height:1.15;margin-bottom:14px;
+  color:#f5d76e;
+  text-shadow:
+    0 1px 0 #b8860b,0 2px 0 #a8790a,0 3px 0 #8a6508,
+    0 4px 0 #6b4e06,0 5px 0 #4d3804,0 6px 0 #2e2202,
+    0 7px 0 #1a1408,0 9px 16px rgba(0,0,0,.95),
+    0 0 40px rgba(212,175,55,.55);
+}
+.cover-subtitle{
+  font-family:'Cinzel','Baloo 2',serif;
+  font-size:clamp(.95rem,2.6vw,1.3rem);font-weight:700;
+  color:#f0e6d2;letter-spacing:.30em;margin-bottom:34px;
+  text-transform:uppercase;
+  text-shadow:0 1px 0 #8a6508,0 2px 0 #6b4e06,0 3px 0 #4d3804,0 5px 10px rgba(0,0,0,.9);
+}
+.cover-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 30px;max-width:400px;}
+.cover-divider .line{flex:1;height:1px;background:linear-gradient(90deg, transparent, #d4af37, #f5d76e, #d4af37, transparent);box-shadow:0 0 8px rgba(212,175,55,.7);}
+
+.teacher-card{
+  display:inline-flex;flex-direction:column;align-items:center;gap:4px;
+  padding:18px 40px;margin:0 0 34px;border-radius:18px;
+  background:linear-gradient(135deg, rgba(212,175,55,.10), rgba(0,0,0,.55), rgba(212,175,55,.10));
+  border:1.5px solid rgba(212,175,55,.85);position:relative;
+  box-shadow:inset 0 1px 0 rgba(212,175,55,.7),inset 0 -1px 0 rgba(0,0,0,.5),0 12px 32px rgba(0,0,0,.6),0 0 40px rgba(212,175,55,.30);
+}
+.teacher-card::before,.teacher-card::after{content:"";position:absolute;width:14px;height:14px;border:2px solid #d4af37;transform:rotate(45deg);background:#0d0a04;}
+.teacher-card::before{top:-8px;left:50%;margin-left:-7px;}
+.teacher-card::after{bottom:-8px;left:50%;margin-left:-7px;}
+.teacher-label{font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:#e8c86a;text-shadow:0 1px 0 rgba(0,0,0,.9);}
+.teacher-name{
+  font-family:'Cinzel','Baloo 2',serif;font-size:clamp(1.05rem,3vw,1.4rem);font-weight:800;letter-spacing:.05em;color:#f5d76e;
+  text-shadow:0 1px 0 #b8860b,0 2px 0 #8a6508,0 3px 0 #4d3804,0 5px 10px rgba(0,0,0,.95),0 0 24px rgba(212,175,55,.65);
+}
+.year-badge{
+  display:inline-block;margin-top:6px;padding:6px 18px;border-radius:999px;
+  background:linear-gradient(135deg,#1a1408,#4d3804,#1a1408);
+  color:#f5d76e;font-size:.78rem;font-weight:800;letter-spacing:.14em;
+  border:1px solid rgba(212,175,55,.8);
+  text-shadow:0 1px 2px rgba(0,0,0,.9);
+  box-shadow:0 4px 14px rgba(212,175,55,.35), inset 0 1px 0 rgba(245,215,110,.4);
+}
+.btn-mulai{
+  font-family:'Cinzel','Baloo 2',serif;font-weight:800;font-size:1.05rem;letter-spacing:.14em;
+  color:#1a0505;border:2px solid #f5d76e;border-radius:16px;padding:17px 48px;cursor:pointer;
+  background:linear-gradient(135deg, #f5d76e 0%, #d4af37 45%, #b8860b 100%);
+  box-shadow:0 6px 0 #7a5c06,0 10px 26px rgba(0,0,0,.65),0 0 40px rgba(212,175,55,.55),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -2px 0 rgba(0,0,0,.25);
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn-mulai:hover{
+  transform:translateY(-3px) scale(1.04);
+  box-shadow:0 9px 0 #7a5c06,0 14px 34px rgba(0,0,0,.7),0 0 60px rgba(212,175,55,.95),inset 0 1px 0 rgba(255,255,255,.7),inset 0 -2px 0 rgba(0,0,0,.25);
+}
+.btn-mulai:active{
+  transform:translateY(3px) scale(.98);
+  box-shadow:0 2px 0 #7a5c06,0 6px 14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.7);
+}
+.ornament-bottom{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:30px;}
+.ornament-bottom .ornament-line{width:100px;}
+
+@media(max-width:560px){
+  .cover{padding:20px 8px;border-radius:22px;}
+  .cover::after{inset:10px;border-radius:16px;}
+  .cover-inner{padding:32px 16px;}
+  .cover-corner{width:80px;height:80px;}
+  .cover-subtitle{letter-spacing:.20em;}
+  .teacher-card{padding:14px 26px;}
+  .btn-mulai{padding:15px 32px;font-size:.95rem;}
+}
+
+/* ============ MENU AKORDEON ============ */
+.page-head{text-align:center;margin:34px 0 30px;}
+.page-head h1{font-size:clamp(1.5rem,4.6vw,2.2rem);font-weight:800;}
+.page-head p{color:var(--muted);font-weight:700;margin-top:6px;}
+
+.bab-acc{
+  background:var(--card);border:2px solid var(--card-border);
+  border-radius:26px;margin-bottom:18px;
+  box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+  transition:box-shadow .3s ease, transform .3s ease;
+  animation:fadeUp .55s backwards;
+}
+.bab-acc:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.bab-acc.open{box-shadow:var(--shadow);}
+.bab-acc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;transition:width .3s ease;}
+.bab-acc.c1::before{background:linear-gradient(#f59e0b,#ef4444);}
+.bab-acc.c2::before{background:linear-gradient(#38bdf8,#2563eb);}
+.bab-acc.c3::before{background:linear-gradient(#34d399,#059669);}
+.bab-acc.c4::before{background:linear-gradient(#f472b6,#a855f7);}
+.bab-acc.c5::before{background:linear-gradient(#facc15,#ea580c);}
+.bab-acc.c6::before{background:linear-gradient(#818cf8,#1e40af);}
+.bab-acc.open::before{width:10px;}
+
+.bab-header{
+  display:flex;align-items:center;gap:16px;width:100%;
+  padding:22px 24px 22px 28px;
+  background:transparent;border:none;cursor:pointer;
+  text-align:left;font-family:inherit;color:inherit;
+  transition:background .2s ease;
+}
+.bab-header:hover{background:var(--chip);}
+.bab-emoji{
+  font-size:2rem;flex-shrink:0;width:60px;height:60px;border-radius:18px;
+  display:grid;place-items:center;background:var(--chip);
+  transition:transform .3s ease;
+}
+.bab-acc.open .bab-emoji{transform:scale(1.08) rotate(-4deg);}
+.bab-header-text{flex:1;min-width:0;}
+.bab-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:2px;}
+.bab-title{font-family:'Baloo 2',sans-serif;font-size:clamp(1rem,2.9vw,1.2rem);font-weight:800;line-height:1.25;color:var(--text);}
+.bab-toggle{
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;background:var(--chip);color:var(--primary);
+  font-size:1.15rem;font-weight:800;
+  transition:transform .35s cubic-bezier(.22,1.2,.36,1), background .25s, color .25s;
+}
+.bab-acc.open .bab-toggle{transform:rotate(180deg);background:var(--primary);color:#fff;}
+
+.bab-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s cubic-bezier(.22,1,.36,1);
+  padding:0 24px 0 28px;
+}
+.bab-acc.open .bab-body{max-height:700px;padding:0 24px 22px 28px;}
+.bab-body-inner{border-top:2px dashed var(--card-border);padding-top:18px;}
+
+.sub-title{
+  font-size:.78rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.sub-title::before{content:"";display:inline-block;width:14px;height:2px;background:var(--primary);border-radius:2px;}
+
+/* ============ TOMBOL BULAT SUB-BAB BERJAJAR KE KANAN ============ */
+.sub-buttons{
+  display:flex;flex-direction:row;gap:18px;
+  overflow-x:auto;padding:10px 4px 16px;
+  margin-bottom:14px;
+  scrollbar-width:thin;scrollbar-color:var(--card-border) transparent;
+}
+.sub-buttons::-webkit-scrollbar{height:6px;}
+.sub-buttons::-webkit-scrollbar-thumb{background:var(--card-border);border-radius:3px;}
+.sub-buttons::-webkit-scrollbar-track{background:transparent;}
+
+.sub-btn{
+  flex:0 0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  background:transparent;border:none;cursor:pointer;
+  font-family:inherit;padding:4px;width:110px;
+  transition:transform .22s ease;
+}
+.sub-btn:hover{transform:translateY(-5px);}
+.sub-btn:active{transform:translateY(-1px) scale(.97);}
+
+.sub-circle{
+  position:relative;width:82px;height:82px;border-radius:50%;
+  display:grid;place-items:center;
+  font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.8rem;color:#fff;
+  text-shadow:0 1px 0 rgba(255,255,255,.4),0 -1px 1px rgba(0,0,0,.4),0 2px 3px rgba(0,0,0,.35);
+  box-shadow:0 8px 16px rgba(0,0,0,.28),0 3px 6px rgba(0,0,0,.18),inset 0 4px 4px rgba(255,255,255,.55),inset 0 -5px 8px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.15);
+  transition:box-shadow .25s ease, transform .25s ease;
+}
+.sub-btn:hover .sub-circle{
+  box-shadow:0 12px 22px rgba(0,0,0,.35),0 5px 10px rgba(0,0,0,.22),inset 0 5px 5px rgba(255,255,255,.65),inset 0 -6px 10px rgba(0,0,0,.4),inset 0 0 0 2px rgba(255,255,255,.2);
+}
+.sub-btn:active .sub-circle{
+  box-shadow:0 3px 6px rgba(0,0,0,.25),0 1px 3px rgba(0,0,0,.18),inset 0 5px 10px rgba(0,0,0,.4),inset 0 -2px 4px rgba(255,255,255,.3),inset 0 0 0 2px rgba(0,0,0,.1);
+}
+.bab-acc.c1 .sub-circle{background:radial-gradient(circle at 30% 25%, #fbbf24, #f59e0b 45%, #b45309);}
+.bab-acc.c2 .sub-circle{background:radial-gradient(circle at 30% 25%, #60a5fa, #3b82f6 45%, #1d4ed8);}
+.bab-acc.c3 .sub-circle{background:radial-gradient(circle at 30% 25%, #4ade80, #10b981 45%, #047857);}
+.bab-acc.c4 .sub-circle{background:radial-gradient(circle at 30% 25%, #e879f9, #a855f7 45%, #6b21a8);}
+.bab-acc.c5 .sub-circle{background:radial-gradient(circle at 30% 25%, #fbbf24, #ea580c 45%, #9a3412);}
+.bab-acc.c6 .sub-circle{background:radial-gradient(circle at 30% 25%, #818cf8, #4f46e5 45%, #1e40af);}
+.sub-circle::before{
+  content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:34px;height:14px;border-radius:50%;
+  background:radial-gradient(ellipse, rgba(255,255,255,.75), transparent 70%);
+  pointer-events:none;filter:blur(1px);
+}
+.sub-label{
+  font-size:.75rem;font-weight:800;color:var(--text);
+  text-align:center;line-height:1.3;max-width:110px;
+  transition:color .2s ease;
+}
+.sub-btn:hover .sub-label{color:var(--primary);}
+
+.quiz-btn-wrap{display:flex;justify-content:center;padding-top:6px;}
+.quiz-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:inherit;font-weight:800;font-size:.95rem;
+  color:#4a2500;
+  background:linear-gradient(135deg,#fde68a,#fbbf24,#f59e0b);
+  border:none;border-radius:14px;padding:12px 26px;cursor:pointer;
+  box-shadow:0 4px 12px rgba(245,158,11,.4), inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.quiz-btn:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 8px 20px rgba(245,158,11,.55), inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* ============ TTS (Text-to-Speech) ============ */
+.tts-bar{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--chip);
+  border:2px dashed var(--card-border);
+  border-radius:18px;
+  padding:12px 16px;
+  margin-bottom:20px;
+}
+.tts-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:inherit;font-weight:800;font-size:.92rem;
+  border:none;border-radius:14px;
+  padding:11px 22px;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+  box-shadow:0 4px 10px rgba(37,99,235,.35),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.2);
+  transition:transform .18s ease, box-shadow .18s ease, background .2s;
+}
+.tts-btn:hover:not(:disabled){
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(37,99,235,.45),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.2);
+}
+.tts-btn:active:not(:disabled){transform:translateY(1px) scale(.98);}
+.tts-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.tts-btn.tts-speaking{
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  animation:ttsPulse 1.5s ease-in-out infinite;
+}
+@keyframes ttsPulse{
+  0%,100%{box-shadow:0 4px 10px rgba(245,158,11,.4), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.2);}
+  50%{box-shadow:0 4px 20px rgba(245,158,11,.85), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.2);}
+}
+.tts-btn.tts-icon-btn{
+  padding:11px 16px;
+  background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+.tts-btn.tts-icon-btn:hover:not(:disabled){
+  box-shadow:0 8px 18px rgba(239,68,68,.5),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.2);
+}
+.tts-info{
+  font-size:.78rem;font-weight:800;color:var(--muted);
+  display:inline-flex;align-items:center;gap:6px;margin-left:auto;
+}
+.tts-info .dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:#cbd5e1;transition:background .3s;
+}
+.tts-info.on .dot{background:#10b981;box-shadow:0 0 8px #10b981;animation:ttsDot 1s ease-in-out infinite;}
+@keyframes ttsDot{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ============ SISA STYLING ============ */
+.btn{font-family:'Nunito',sans-serif;font-weight:800;font-size:.98rem;border:none;border-radius:16px;padding:13px 26px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease, opacity .2s;box-shadow:var(--shadow-sm);color:#fff;}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 24px rgba(37,99,235,.32);}
+.btn:active{transform:translateY(0) scale(.98);}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb);}
+.btn-accent{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#4a2500;}
+.btn-ghost{background:var(--card);color:var(--text);border:2px solid var(--card-border);box-shadow:none;}
+.btn-ghost:hover{background:var(--chip);box-shadow:var(--shadow-sm);transform:translateY(-2px) scale(1.03);}
+
+.topbar{display:flex;align-items:center;gap:14px;margin:26px 0 18px;flex-wrap:wrap;}
+.topbar-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.05rem;flex:1;min-width:180px;}
+.progress-wrap{margin-bottom:20px;}
+.progress-info{display:flex;justify-content:space-between;font-size:.82rem;font-weight:800;color:var(--muted);margin-bottom:7px;}
+.progress{height:13px;border-radius:999px;background:var(--chip);border:1.5px solid var(--card-border);overflow:hidden;}
+.progress-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#34d399,#3b82f6,#f59e0b);transition:width .45s cubic-bezier(.22,1,.36,1);}
+.card{background:var(--card);border:2px solid var(--card-border);border-radius:26px;padding:28px 26px;box-shadow:var(--shadow-sm);}
+
+.materi-head{display:flex;gap:16px;align-items:center;padding-bottom:18px;margin-bottom:20px;border-bottom:2px dashed var(--card-border);}
+.materi-icon{font-size:2rem;width:64px;height:64px;flex-shrink:0;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#dbeafe,#bfdbfe);}
+body.dark .materi-icon{background:linear-gradient(135deg,#1e3a8a,#1e40af);}
+.materi-label{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);}
+.materi-head h2{font-size:clamp(1.05rem,3.2vw,1.35rem);font-weight:800;}
+
+.materi-body{font-size:1rem;line-height:1.78;}
+.materi-body .lead{font-size:1.05rem;font-weight:700;background:var(--chip);border-radius:16px;padding:16px 18px;margin-bottom:22px;border-left:6px solid var(--primary);}
+.materi-body h3{font-size:1.12rem;font-weight:800;margin:26px 0 12px;color:var(--primary);}
+.materi-body p{margin-bottom:12px;}
+.materi-body ul,.materi-body ol{margin:0 0 14px 4px;padding-left:22px;}
+.materi-body li{margin-bottom:9px;}
+.materi-body b{font-weight:800;}
+.materi-body .steps{list-style:none;padding-left:0;counter-reset:st;}
+.materi-body .steps li{counter-increment:st;position:relative;padding-left:48px;background:var(--chip);border-radius:14px;padding-top:11px;padding-bottom:11px;padding-right:14px;margin-bottom:10px;}
+.materi-body .steps li::before{content:counter(st);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:800;}
+.fact,.tip,.warn{border-radius:16px;padding:15px 18px;margin:20px 0;font-size:.95rem;font-weight:700;line-height:1.7;}
+.fact{background:rgba(251,191,36,.18);border-left:6px solid #f59e0b;}
+.tip{background:rgba(16,185,129,.16);border-left:6px solid #10b981;}
+.warn{background:rgba(239,68,68,.14);border-left:6px solid #ef4444;}
+
+.ilustrasi{background:var(--chip);border:2px dashed var(--card-border);border-radius:20px;padding:18px 14px 10px;margin:22px 0;text-align:center;overflow:hidden;}
+.ilustrasi svg{max-width:100%;height:auto;display:block;margin:0 auto;}
+.ilustrasi .caption{font-size:.82rem;font-weight:800;color:var(--muted);margin-top:10px;font-style:italic;}
+
+.materi-nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;padding-top:20px;border-top:2px dashed var(--card-border);flex-wrap:wrap;}
+.materi-nav .btn{flex:1 1 140px;}
+
+.music-hint{display:none;align-items:center;gap:8px;font-size:.78rem;font-weight:800;color:var(--muted);background:var(--chip);border-radius:999px;padding:5px 12px;margin-bottom:14px;width:fit-content;}
+.music-hint.show{display:inline-flex;}
+.music-hint .bars{display:inline-flex;gap:2px;align-items:flex-end;height:12px;}
+.music-hint .bars i{display:block;width:3px;background:var(--green);border-radius:2px;animation:eq 1s ease-in-out infinite;}
+.music-hint .bars i:nth-child(2){animation-delay:.15s}
+.music-hint .bars i:nth-child(3){animation-delay:.3s}
+.music-hint .bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:12px}}
+
+.quiz-card{padding:26px 24px;}
+.q-number{display:inline-block;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;font-weight:800;font-size:.78rem;padding:6px 16px;border-radius:999px;letter-spacing:.08em;margin-bottom:14px;}
+.q-text{font-size:clamp(1.02rem,3.1vw,1.22rem);font-weight:800;line-height:1.55;margin-bottom:20px;}
+.options{display:grid;gap:11px;}
+.option{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font-family:'Nunito',sans-serif;font-size:.97rem;font-weight:700;color:var(--text);background:var(--card);border:2px solid var(--card-border);border-radius:16px;padding:14px 16px;cursor:pointer;transition:transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s;box-shadow:var(--shadow-sm);}
+.option:hover:not(:disabled){transform:translateX(6px) scale(1.012);border-color:var(--primary);box-shadow:0 8px 20px rgba(37,99,235,.18);}
+.option:disabled{cursor:default;}
+.opt-letter{flex-shrink:0;width:32px;height:32px;border-radius:11px;background:var(--chip);color:var(--text);display:grid;place-items:center;font-weight:800;font-size:.88rem;transition:background .2s,color .2s;}
+.option.correct{border-color:#10b981;background:rgba(16,185,129,.14);animation:pulse .45s ease;}
+.option.correct .opt-letter{background:#10b981;color:#fff;}
+.option.wrong{border-color:#ef4444;background:rgba(239,68,68,.13);animation:shake .4s ease;}
+.option.wrong .opt-letter{background:#ef4444;color:#fff;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+
+.feedback{margin-top:18px;border-radius:16px;padding:0 18px;font-weight:700;font-size:.95rem;line-height:1.7;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease, opacity .35s ease, padding .35s ease;}
+.feedback.show{max-height:400px;opacity:1;padding:16px 18px;}
+.feedback.ok{background:rgba(16,185,129,.16);border-left:6px solid #10b981;}
+.feedback.no{background:rgba(239,68,68,.14);border-left:6px solid #ef4444;}
+.feedback .fb-title{display:block;font-size:1.02rem;margin-bottom:5px;font-weight:800;}
+.quiz-actions{margin-top:20px;display:flex;justify-content:flex-end;}
+
+.hasil-card{text-align:center;padding:44px 26px;animation:popIn .55s cubic-bezier(.22,1.2,.36,1);}
+.hasil-emoji{font-size:4.2rem;line-height:1;margin-bottom:12px;animation:bob 2.4s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hasil-card h2{font-size:clamp(1.4rem,4.4vw,1.9rem);font-weight:800;margin-bottom:10px;}
+.hasil-score{font-family:'Baloo 2',sans-serif;font-size:clamp(2.6rem,11vw,4rem);font-weight:800;background:linear-gradient(120deg,#2563eb,#10b981,#f59e0b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+.hasil-card p{color:var(--muted);font-weight:700;margin-bottom:26px;font-size:1.02rem;}
+.hasil-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+.footer-note{text-align:center;margin-top:34px;font-size:.82rem;font-weight:700;color:var(--muted);}
+
+@media(max-width:560px){
+  body{padding:14px 11px 40px;}
+  .card{padding:22px 17px;border-radius:22px;}
+  .bab-header{padding:18px 14px 18px 20px;gap:12px;}
+  .bab-emoji{width:48px;height:48px;font-size:1.6rem;}
+  .bab-toggle{width:32px;height:32px;font-size:1rem;}
+  .bab-body{padding:0 14px 0 20px;}
+  .bab-acc.open .bab-body{padding:0 14px 18px 20px;}
+  .sub-buttons{gap:14px;padding:8px 2px 14px;}
+  .sub-btn{width:96px;}
+  .sub-circle{width:70px;height:70px;font-size:1.5rem;}
+  .sub-label{font-size:.7rem;max-width:96px;}
+  .materi-head{flex-direction:column;align-items:flex-start;gap:12px;}
+  .materi-nav .btn{flex:1 1 100%;}
+  .toggle-group{top:10px;right:10px;gap:8px;}
+  .theme-toggle{width:42px;height:42px;font-size:1.05rem;}
+  .quiz-actions{justify-content:stretch;}
+  .quiz-actions .btn{width:100%;}
+  .tts-bar{padding:10px 12px;gap:8px;}
+  .tts-btn{padding:10px 16px;font-size:.85rem;}
+  .tts-info{width:100%;justify-content:flex-end;margin-left:0;margin-top:2px;}
+}
+</style>
+</head>
+<body>
+
+<div class="toggle-group">
+  <button class="theme-toggle" id="musicToggle" title="Nyalakan / matikan musik">🎵</button>
+  <button class="theme-toggle" id="themeToggle" title="Ganti tema">🌙</button>
+</div>
+
+<!-- ==================== COVER ==================== -->
+<section id="view-cover" class="view active">
+  <div class="cover">
+    <div class="cover-pattern"></div>
+    <div class="cover-corner tl">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M6 6 L50 6 M6 6 L6 50"/><path d="M14 14 L42 14 M14 14 L14 42"/><circle cx="28" cy="28" r="6"/><circle cx="28" cy="28" r="11"/><path d="M28 17 L28 39 M17 28 L39 28"/><path d="M55 6 L75 6 L75 14 L55 14 Z" opacity=".6"/><path d="M6 55 L6 75 L14 75 L14 55 Z" opacity=".6"/><circle cx="60" cy="60" r="2" fill="#f5d76e" stroke="none"/></g></svg>
+    </div>
+    <div class="cover-corner tr">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M6 6 L50 6 M6 6 L6 50"/><path d="M14 14 L42 14 M14 14 L14 42"/><circle cx="28" cy="28" r="6"/><circle cx="28" cy="28" r="11"/><path d="M28 17 L28 39 M17 28 L39 28"/><path d="M55 6 L75 6 L75 14 L55 14 Z" opacity=".6"/><path d="M6 55 L6 75 L14 75 L14 55 Z" opacity=".6"/><circle cx="60" cy="60" r="2" fill="#f5d76e" stroke="none"/></g></svg>
+    </div>
+    <div class="cover-corner bl">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M6 6 L50 6 M6 6 L6 50"/><path d="M14 14 L42 14 M14 14 L14 42"/><circle cx="28" cy="28" r="6"/><circle cx="28" cy="28" r="11"/><path d="M28 17 L28 39 M17 28 L39 28"/><path d="M55 6 L75 6 L75 14 L55 14 Z" opacity=".6"/><path d="M6 55 L6 75 L14 75 L14 55 Z" opacity=".6"/><circle cx="60" cy="60" r="2" fill="#f5d76e" stroke="none"/></g></svg>
+    </div>
+    <div class="cover-corner br">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M6 6 L50 6 M6 6 L6 50"/><path d="M14 14 L42 14 M14 14 L14 42"/><circle cx="28" cy="28" r="6"/><circle cx="28" cy="28" r="11"/><path d="M28 17 L28 39 M17 28 L39 28"/><path d="M55 6 L75 6 L75 14 L55 14 Z" opacity=".6"/><path d="M6 55 L6 75 L14 75 L14 55 Z" opacity=".6"/><circle cx="60" cy="60" r="2" fill="#f5d76e" stroke="none"/></g></svg>
+    </div>
+
+    <div class="cover-inner">
+      <div class="ornament-top">
+        <span class="ornament-line"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
+      </div>
+
+      <div class="cover-badge">Kurikulum Merdeka · SD Kelas 6</div>
+
+      <h1 class="cover-title">Materi Pembelajaran IPAS</h1>
+      <p class="cover-subtitle">Kelas VI Sekolah Dasar</p>
+
+      <div class="cover-divider">
+        <span class="line"></span>
+        <span class="ornament-diamond small"></span>
+        <span class="line"></span>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-label">Disusun Oleh</div>
+        <div class="teacher-name">DEDY NUGROHO, S.Pd.SD</div>
+        <div class="year-badge">Tahun Pelajaran 2026 / 2027</div>
+      </div>
+
+      <div>
+        <button class="btn-mulai" onclick="goMenu()">✦ MULAI BELAJAR ✦</button>
+      </div>
+
+      <div class="ornament-bottom">
+        <span class="ornament-line"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MENU ==================== -->
+<section id="view-menu" class="view">
+  <div class="container">
+    <div class="page-head"><h1>📖 Menu Pembelajaran</h1><p>Klik bab, lalu pilih sub-bab yang ingin kamu buka!</p></div>
+    <div id="menuList"></div>
+    <p class="footer-note">✨ Belajar sedikit setiap hari lebih baik daripada belajar banyak sekali sehari ✨</p>
+  </div>
+</section>
+
+<section id="view-materi" class="view">
+  <div class="container">
+    <div class="topbar">
+      <button class="btn btn-ghost" onclick="goMenu()">← Menu</button>
+      <div class="topbar-title" id="materiBabTitle"></div>
+    </div>
+    <div class="music-hint" id="musicHint"><span class="bars"><i></i><i></i><i></i><i></i></span>Musik instrumental sedang diputar</div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="materiProgressText"></span><span id="materiProgressPercent"></span></div>
+      <div class="progress"><div class="progress-fill" id="materiProgressFill"></div></div>
+    </div>
+    <div class="card materi-card">
+      <div class="materi-head">
+        <div class="materi-icon" id="materiIcon"></div>
+        <div><div class="materi-label" id="materiLabel"></div><h2 id="materiTitle"></h2></div>
+      </div>
+
+      <!-- === TTS BAR === -->
+      <div class="tts-bar" id="ttsBar">
+        <button class="tts-btn" id="ttsPlayBtn" onclick="ttsTogglePlay()">
+          <span id="ttsBtnIcon">🔊</span>
+          <span id="ttsBtnText">Bacakan Materi</span>
+        </button>
+        <button class="tts-btn tts-icon-btn" id="ttsStopBtn" onclick="ttsStop()" style="display:none" title="Berhenti membaca">⏹️</button>
+        <span class="tts-info" id="ttsInfo">
+          <span class="dot"></span>
+          <span id="ttsStatus">Suara belum aktif</span>
+        </span>
+      </div>
+
+      <div class="materi-body" id="materiBody"></div>
+      <div class="materi-nav">
+        <button class="btn btn-ghost" id="prevBtn" onclick="prevSub()">← Sebelumnya</button>
+        <button class="btn btn-primary" id="nextSubBtn" onclick="nextSub()">Selanjutnya →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="view-kuis" class="view">
+  <div class="container">
+    <div class="topbar">
+      <button class="btn btn-ghost" onclick="goMenu()">← Menu</button>
+      <div class="topbar-title" id="kuisTitle"></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="kuisProgressText"></span><span id="kuisScoreText"></span></div>
+      <div class="progress"><div class="progress-fill" id="kuisProgressFill"></div></div>
+    </div>
+    <div class="card quiz-card">
+      <div class="q-number" id="qNumber"></div>
+      <h3 class="q-text" id="qText"></h3>
+      <div class="options" id="quizOptions"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="quiz-actions"><button class="btn btn-primary" id="nextBtn" style="display:none" onclick="nextQuestion()">Soal Berikutnya →</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="view-hasil" class="view">
+  <div class="container">
+    <div class="card hasil-card">
+      <div class="hasil-emoji" id="hasilEmoji">🎉</div>
+      <h2 id="hasilTitle">Hebat!</h2>
+      <div class="hasil-score" id="hasilScore">0/10</div>
+      <p id="hasilMsg"></p>
+      <div class="hasil-actions">
+        <button class="btn btn-accent" onclick="repeatQuiz()">🔄 Ulangi Kuis</button>
+        <button class="btn btn-primary" onclick="goMenu()">🏠 Kembali ke Menu</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* =========================================================
+   MUSIK INSTRUMENTAL
+   ========================================================= */
+const Music = (() => {
+  let ctx=null, master=null, playing=false, timer=null, nextTime=0, step=0;
+  const BPM=66, beat=60/BPM, STEP_DUR=beat/2, LOOKAHEAD=0.25, TICK=60;
+  const SCALE=[261.63,293.66,329.63,392,440,523.25,587.33,659.25];
+  const CHORDS=[[130.81,261.63,329.63,392],[110,220,261.63,329.63],[87.31,174.61,220,261.63],[98,196,246.94,293.66]];
+  const MELODY=[5,-1,4,3,4,-1,5,5,4,3,2,-1,3,4,-1,-1,3,4,5,-1,4,3,2,3,4,5,6,5,4,2,-1,-1];
+  function init(){
+    if(ctx)return;
+    const AC=window.AudioContext||window.webkitAudioContext; if(!AC)return;
+    ctx=new AC(); master=ctx.createGain(); master.gain.value=0;
+    const conv=ctx.createConvolver(), rate=ctx.sampleRate, len=Math.floor(rate*2.2);
+    const impulse=ctx.createBuffer(2,len,rate);
+    for(let ch=0;ch<2;ch++){const d=impulse.getChannelData(ch);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.6);}
+    conv.buffer=impulse;
+    const wet=ctx.createGain(); wet.gain.value=.22;
+    const dry=ctx.createGain(); dry.gain.value=.85;
+    master.connect(dry); dry.connect(ctx.destination);
+    master.connect(conv); conv.connect(wet); wet.connect(ctx.destination);
+  }
+  function note(freq,time,dur,peak,type){
+    const osc=ctx.createOscillator(), g=ctx.createGain();
+    osc.type=type; osc.frequency.value=freq;
+    g.gain.setValueAtTime(.0001,time);
+    g.gain.linearRampToValueAtTime(peak,time+.06);
+    g.gain.exponentialRampToValueAtTime(.0001,time+dur);
+    osc.connect(g); g.connect(master);
+    osc.start(time); osc.stop(time+dur+.05);
+  }
+  function schedule(){
+    while(nextTime<ctx.currentTime+LOOKAHEAD){
+      const s=step%MELODY.length;
+      const chordIdx=Math.floor(step/8)%CHORDS.length;
+      const m=MELODY[s];
+      if(m>=0)note(SCALE[m],nextTime,STEP_DUR*2.4,.075,'triangle');
+      if(s%8===0)CHORDS[chordIdx].forEach((f,i)=>note(f,nextTime,beat*4.2,i===0?.075:.045,'sine'));
+      if(s%4===0)note(CHORDS[chordIdx][0]/2,nextTime,beat*1.6,.06,'sine');
+      nextTime+=STEP_DUR; step++;
+    }
+  }
+  function start(){
+    init(); if(!ctx)return;
+    if(ctx.state==='suspended')ctx.resume();
+    if(playing)return;
+    playing=true; step=0; nextTime=ctx.currentTime+.08;
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.setValueAtTime(master.gain.value,ctx.currentTime);
+    master.gain.linearRampToValueAtTime(.55,ctx.currentTime+1.6);
+    timer=setInterval(schedule,TICK);
+  }
+  function stop(){
+    if(!playing)return; playing=false;
+    if(ctx&&master){const now=ctx.currentTime;
+      master.gain.cancelScheduledValues(now);
+      master.gain.setValueAtTime(master.gain.value,now);
+      master.gain.linearRampToValueAtTime(0,now+.7);}
+    const t=timer; timer=null;
+    setTimeout(()=>{if(t)clearInterval(t);},900);
+  }
+  return {start,stop,isPlaying:()=>playing};
+})();
+
+/* =========================================================
+   TEXT-TO-SPEECH — Khusus Anak SD
+   Intonasi lambat, hangat, jelas seperti guru membaca cerita
+   ========================================================= */
+const TTS = (() => {
+  let utter = null;
+  let isPaused = false;
+  let isSpeaking = false;
+  let onDoneCb = null;
+  let chunks = [];
+  let chunkIndex = 0;
+
+  function supported(){
+    return 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  }
+
+  function pickVoice(){
+    if(!supported()) return null;
+    const voices = speechSynthesis.getVoices();
+    const idVoices = voices.filter(v => /^id[-_]ID/i.test(v.lang) || (v.lang && v.lang.toLowerCase().startsWith('id')));
+    const female = idVoices.find(v => /damayanti|gadis|female|wanita|perempuan/i.test(v.name));
+    if(female) return female;
+    if(idVoices.length) return idVoices[0];
+    const my = voices.find(v => /^ms[-_]MY/i.test(v.lang));
+    if(my) return my;
+    return null;
+  }
+
+  function cleanText(html){
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    tmp.querySelectorAll('br').forEach(b => b.replaceWith(' '));
+    let text = (tmp.textContent || tmp.innerText || '')
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return text;
+  }
+
+  function splitIntoChunks(text){
+    let parts = text
+      .replace(/([.?!])\s+/g, '$1|')
+      .replace(/\|\s*$/,'')
+      .split('|')
+      .map(s => s.trim())
+      .filter(s => s.length > 2);
+
+    const result = [];
+    parts.forEach(p => {
+      if(p.length <= 180){
+        result.push(p);
+      } else {
+        const sub = p.split(/,\s+/);
+        let buffer = '';
+        sub.forEach((s) => {
+          const candidate = buffer ? buffer + ', ' + s : s;
+          if(candidate.length > 180){
+            if(buffer) result.push(buffer + ',');
+            buffer = s;
+          } else {
+            buffer = candidate;
+          }
+        });
+        if(buffer) result.push(buffer);
+      }
+    });
+    return result;
+  }
+
+  function speakChunk(index){
+    if(index >= chunks.length){
+      isSpeaking = false; isPaused = false;
+      if(onDoneCb) onDoneCb();
+      return;
+    }
+    chunkIndex = index;
+    const text = chunks[index];
+
+    utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'id-ID';
+
+    // ==== PENGATURAN KHUSUS ANAK SD ====
+    utter.rate = 0.75;      // lebih lambat (default 1.0)
+    utter.pitch = 1.15;     // lebih tinggi & hangat (default 1.0)
+    utter.volume = 1.0;
+    // ===================================
+
+    const voice = pickVoice();
+    if(voice){ utter.voice = voice; utter.lang = voice.lang; }
+
+    utter.onend = () => {
+      if(isPaused) return;
+      setTimeout(() => {
+        if(!isPaused) speakChunk(index + 1);
+      }, 300);
+    };
+
+    utter.onerror = (e) => {
+      console.warn('TTS error:', e);
+      isSpeaking = false; isPaused = false;
+      if(onDoneCb) onDoneCb();
+    };
+
+    speechSynthesis.speak(utter);
+  }
+
+  function speak(text, onDone){
+    if(!supported()) return false;
+    stop();
+    chunks = splitIntoChunks(text);
+    chunkIndex = 0;
+    onDoneCb = onDone || null;
+    isSpeaking = true; isPaused = false;
+    speakChunk(0);
+    return true;
+  }
+
+  function pause(){
+    if(speechSynthesis.speaking && !speechSynthesis.paused){
+      speechSynthesis.pause();
+      isPaused = true;
+      return true;
+    }
+    return false;
+  }
+
+  function resume(){
+    if(speechSynthesis.paused){
+      speechSynthesis.resume();
+      isPaused = false;
+      return true;
+    }
+    if(isPaused){
+      isPaused = false;
+      speakChunk(chunkIndex);
+      return true;
+    }
+    return false;
+  }
+
+  function stop(){
+    if(supported() && (speechSynthesis.speaking || speechSynthesis.pending)){
+      speechSynthesis.cancel();
+    }
+    isSpeaking = false; isPaused = false;
+    chunks = []; chunkIndex = 0;
+  }
+
+  if(supported()){
+    speechSynthesis.onvoiceschanged = () => { pickVoice(); };
+    setTimeout(() => pickVoice(), 200);
+  }
+
+  return {
+    speak, pause, resume, stop,
+    isSpeaking: () => isSpeaking,
+    isPaused: () => isPaused,
+    supported,
+    cleanText
+  };
+})();
+
+/* ============ Kontrol TTS di halaman Materi ============ */
+function ttsTogglePlay(){
+  const btn = document.getElementById('ttsPlayBtn');
+  const stopBtn = document.getElementById('ttsStopBtn');
+  const icon = document.getElementById('ttsBtnIcon');
+  const text = document.getElementById('ttsBtnText');
+  const info = document.getElementById('ttsInfo');
+  const status = document.getElementById('ttsStatus');
+
+  if(!TTS.supported()){
+    alert('Maaf, browser Anda tidak mendukung fitur suara. Coba gunakan Chrome, Edge, atau Safari terbaru.');
+    return;
+  }
+
+  if(TTS.isSpeaking() && !TTS.isPaused()){
+    TTS.pause();
+    icon.textContent = '▶️';
+    text.textContent = 'Lanjutkan';
+    btn.classList.remove('tts-speaking');
+    status.textContent = 'Dijeda';
+    return;
+  }
+  if(TTS.isPaused()){
+    TTS.resume();
+    icon.textContent = '⏸️';
+    text.textContent = 'Jeda';
+    btn.classList.add('tts-speaking');
+    status.textContent = 'Sedang membaca...';
+    return;
+  }
+
+  const html = document.getElementById('materiBody').innerHTML;
+  const judul = document.getElementById('materiTitle').textContent;
+  const babLabel = document.getElementById('materiLabel').textContent;
+  const fullText = `${babLabel}. ${judul}. ${TTS.cleanText(html)}`;
+
+  if(!fullText || fullText.length < 5){
+    alert('Tidak ada materi untuk dibacakan.');
+    return;
+  }
+
+  const ok = TTS.speak(fullText, () => {
+    icon.textContent = '🔊';
+    text.textContent = 'Bacakan Materi';
+    btn.classList.remove('tts-speaking');
+    stopBtn.style.display = 'none';
+    info.classList.remove('on');
+    status.textContent = 'Selesai ✓';
+  });
+
+  if(ok){
+    icon.textContent = '⏸️';
+    text.textContent = 'Jeda';
+    btn.classList.add('tts-speaking');
+    stopBtn.style.display = 'inline-flex';
+    info.classList.add('on');
+    status.textContent = 'Sedang membaca...';
+  }
+}
+
+function ttsStop(){
+  TTS.stop();
+  const btn = document.getElementById('ttsPlayBtn');
+  const stopBtn = document.getElementById('ttsStopBtn');
+  const icon = document.getElementById('ttsBtnIcon');
+  const text = document.getElementById('ttsBtnText');
+  const info = document.getElementById('ttsInfo');
+  const status = document.getElementById('ttsStatus');
+
+  icon.textContent = '🔊';
+  text.textContent = 'Bacakan Materi';
+  btn.classList.remove('tts-speaking');
+  stopBtn.style.display = 'none';
+  info.classList.remove('on');
+  status.textContent = 'Dihentikan';
+}
+
+function ttsResetUI(){
+  TTS.stop();
+  const btn = document.getElementById('ttsPlayBtn');
+  if(!btn) return;
+  const icon = document.getElementById('ttsBtnIcon');
+  const text = document.getElementById('ttsBtnText');
+  const stopBtn = document.getElementById('ttsStopBtn');
+  const info = document.getElementById('ttsInfo');
+  const status = document.getElementById('ttsStatus');
+  icon.textContent = '🔊';
+  text.textContent = 'Bacakan Materi';
+  btn.classList.remove('tts-speaking');
+  stopBtn.style.display = 'none';
+  info.classList.remove('on');
+  status.textContent = 'Suara belum aktif';
+}
+
+/* =========================================================
+   SVG ILUSTRASI
+   ========================================================= */
+function svgPernapasan(){
+return `
+<svg viewBox="0 0 460 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram sistem pernapasan manusia">
+  <path d="M 55 30 Q 130 15 145 80 Q 150 110 130 130 L 130 160 L 90 160 L 90 130 Q 60 120 45 90 Q 40 55 55 30 Z" fill="#ffe0b2" stroke="#8d6e63" stroke-width="2"/>
+  <path d="M 55 60 Q 40 70 45 85 L 55 90 Q 60 78 58 68 Z" fill="#ffccbc" stroke="#8d6e63" stroke-width="1.5"/>
+  <rect x="88" y="140" width="24" height="30" fill="#f8bbd0" stroke="#ad1457" stroke-width="1.5"/>
+  <rect x="92" y="170" width="16" height="90" fill="#90caf9" stroke="#1565c0" stroke-width="1.5"/>
+  <g stroke="#1565c0" stroke-width="1">
+    <line x1="92" y1="185" x2="108" y2="185"/>
+    <line x1="92" y1="200" x2="108" y2="200"/>
+    <line x1="92" y1="215" x2="108" y2="215"/>
+    <line x1="92" y1="230" x2="108" y2="230"/>
+    <line x1="92" y1="245" x2="108" y2="245"/>
+  </g>
+  <path d="M 100 260 L 60 300" stroke="#1565c0" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M 100 260 L 160 300" stroke="#1565c0" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <g stroke="#1e88e5" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M 60 300 L 40 325 M 60 300 L 55 335 M 60 300 L 75 335"/>
+    <path d="M 160 300 L 145 330 M 160 300 L 175 335 M 160 300 L 185 320"/>
+  </g>
+  <g fill="#ff8a65" stroke="#bf360c" stroke-width="1">
+    <circle cx="38" cy="332" r="8"/><circle cx="55" cy="345" r="8"/><circle cx="75" cy="342" r="8"/>
+    <circle cx="145" cy="338" r="8"/><circle cx="168" cy="345" r="8"/><circle cx="188" cy="327" r="8"/>
+    <circle cx="48" cy="352" r="5"/><circle cx="162" cy="355" r="5"/>
+  </g>
+  <path d="M 30 280 Q 15 310 20 360 Q 25 400 70 400 Q 95 400 95 370 L 95 290 Q 95 275 70 275 Q 45 275 30 280 Z" fill="rgba(244,143,177,.45)" stroke="#ad1457" stroke-width="2"/>
+  <path d="M 170 280 Q 185 310 180 360 Q 175 400 130 400 Q 105 400 105 370 L 105 290 Q 105 275 130 275 Q 155 275 170 280 Z" fill="rgba(244,143,177,.45)" stroke="#ad1457" stroke-width="2"/>
+  <path d="M 25 395 Q 100 375 185 395" stroke="#8d6e63" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <g font-family="Nunito, sans-serif" font-size="12" font-weight="700" fill="#1e293b">
+    <line x1="60" y1="80" x2="230" y2="40" stroke="#37474f"/>
+    <text x="235" y="44">Hidung 👃</text>
+    <line x1="120" y1="155" x2="230" y2="85" stroke="#37474f"/>
+    <text x="235" y="89">Laring 🗣️</text>
+    <line x1="120" y1="215" x2="230" y2="130" stroke="#37474f"/>
+    <text x="235" y="134">Trakea 🛤️</text>
+    <line x1="160" y1="275" x2="230" y2="180" stroke="#37474f"/>
+    <text x="235" y="184">Bronkus</text>
+    <line x1="180" y1="345" x2="230" y2="230" stroke="#37474f"/>
+    <text x="235" y="234">Bronkiolus</text>
+    <line x1="180" y1="375" x2="230" y2="280" stroke="#37474f"/>
+    <text x="235" y="284">Alveolus 🫧</text>
+    <line x1="150" y1="395" x2="230" y2="330" stroke="#37474f"/>
+    <text x="235" y="334">Paru-paru 🫁</text>
+    <line x1="180" y1="400" x2="230" y2="380" stroke="#37474f"/>
+    <text x="235" y="384">Diafragma 💪</text>
+  </g>
+</svg>`;
+}
+
+function svgIsiPiringku(){
+return `
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pedoman Isi Piringku">
+  <circle cx="200" cy="200" r="150" fill="#ffffff" stroke="#1565c0" stroke-width="6"/>
+  <circle cx="200" cy="200" r="135" fill="none" stroke="#90caf9" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="65" y1="200" x2="335" y2="200" stroke="#1565c0" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="200" y1="65" x2="200" y2="335" stroke="#1565c0" stroke-width="2" stroke-dasharray="6 4"/>
+  <g><rect x="85" y="230" width="85" height="70" rx="10" fill="#fff3e0" stroke="#f59e0b" stroke-width="2"/>
+    <text x="127" y="270" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#7c2d12">🍚 Nasi</text>
+    <text x="127" y="290" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="700" fill="#7c2d12">/ ubi / roti</text></g>
+  <g><rect x="230" y="230" width="85" height="70" rx="10" fill="#fff3e0" stroke="#f59e0b" stroke-width="2"/>
+    <text x="272" y="270" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#7c2d12">🐟 Lauk</text>
+    <text x="272" y="290" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="700" fill="#7c2d12">pauk bergizi</text></g>
+  <g><rect x="85" y="105" width="85" height="70" rx="10" fill="#e8f5e9" stroke="#10b981" stroke-width="2"/>
+    <text x="127" y="142" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#064e3b">🥦 Sayur</text>
+    <text x="127" y="162" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="700" fill="#064e3b">mayur</text></g>
+  <g><rect x="230" y="105" width="85" height="70" rx="10" fill="#fce4ec" stroke="#ec407a" stroke-width="2"/>
+    <text x="272" y="142" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="800" fill="#880e4f">🍎 Buah</text>
+    <text x="272" y="162" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="700" fill="#880e4f">buahan</text></g>
+  <g stroke="#546e7a" stroke-width="4" fill="none" stroke-linecap="round">
+    <line x1="25" y1="180" x2="25" y2="230"/>
+    <line x1="375" y1="180" x2="375" y2="230"/>
+  </g>
+</svg>`;
+}
+
+function svgTataSurya(){
+return `
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sistem tata surya">
+  <rect width="700" height="300" fill="#0b1220" rx="18"/>
+  <g fill="#ffffff">
+    <circle cx="40" cy="30" r="1.2"/><circle cx="120" cy="55" r="1"/><circle cx="200" cy="25" r="1.4"/>
+    <circle cx="320" cy="40" r="1"/><circle cx="450" cy="20" r="1.2"/><circle cx="560" cy="45" r="1"/>
+    <circle cx="650" cy="30" r="1.4"/><circle cx="90" cy="270" r="1.1"/><circle cx="280" cy="280" r="1.3"/>
+    <circle cx="480" cy="275" r="1"/><circle cx="620" cy="265" r="1.2"/><circle cx="380" cy="60" r="1"/>
+    <circle cx="530" cy="100" r="1"/><circle cx="160" cy="240" r="1"/>
+  </g>
+  <circle cx="70" cy="150" r="48" fill="#ffb300"/>
+  <circle cx="70" cy="150" r="40" fill="#ffca28"/>
+  <circle cx="70" cy="150" r="28" fill="#fff176"/>
+  <text x="70" y="155" text-anchor="middle" font-family="Baloo 2" font-size="13" font-weight="800" fill="#7c2d12">Matahari</text>
+  <g fill="none" stroke="#37474f" stroke-width="1" stroke-dasharray="3 3">
+    <ellipse cx="70" cy="150" rx="75" ry="30"/><ellipse cx="70" cy="150" rx="105" ry="42"/>
+    <ellipse cx="70" cy="150" rx="140" ry="55"/><ellipse cx="70" cy="150" rx="175" ry="68"/>
+    <ellipse cx="70" cy="150" rx="210" ry="82"/><ellipse cx="70" cy="150" rx="245" ry="95"/>
+    <ellipse cx="70" cy="150" rx="280" ry="108"/><ellipse cx="70" cy="150" rx="315" ry="122"/>
+  </g>
+  <circle cx="145" cy="150" r="6" fill="#a1887f"/><text x="145" y="128" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Merkurius</text>
+  <circle cx="175" cy="150" r="8" fill="#ffb74d"/><text x="175" y="120" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Venus</text>
+  <circle cx="210" cy="150" r="9" fill="#42a5f5" stroke="#1565c0"/>
+  <circle cx="207" cy="147" r="2" fill="#66bb6a"/><circle cx="214" cy="152" r="1.6" fill="#66bb6a"/>
+  <circle cx="213" cy="146" r="1.3" fill="#fff"/>
+  <text x="210" y="122" text-anchor="middle" font-family="Nunito" font-size="9" font-weight="800" fill="#90caf9">Bumi</text>
+  <circle cx="245" cy="150" r="7" fill="#e57373"/><text x="245" y="128" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Mars</text>
+  <circle cx="280" cy="150" r="16" fill="#d7ccc8"/>
+  <ellipse cx="280" cy="148" rx="16" ry="3" fill="#a1887f"/>
+  <ellipse cx="280" cy="155" rx="16" ry="2.5" fill="#8d6e63"/>
+  <text x="280" y="118" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Jupiter</text>
+  <circle cx="315" cy="150" r="13" fill="#ffe082"/>
+  <ellipse cx="315" cy="150" rx="22" ry="4" fill="none" stroke="#bcaaa4" stroke-width="2"/>
+  <text x="315" y="118" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Saturnus</text>
+  <circle cx="350" cy="150" r="11" fill="#4dd0e1"/><text x="350" y="122" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Uranus</text>
+  <circle cx="385" cy="150" r="10" fill="#1e88e5"/><text x="385" y="122" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Neptunus</text>
+  <g font-family="Nunito" font-size="9" font-weight="700">
+    <rect x="440" y="60" width="115" height="60" rx="8" fill="rgba(255,224,130,.15)" stroke="#ffb74d" stroke-width="1"/>
+    <text x="497" y="78" text-anchor="middle" fill="#ffcc80">PLANET DALAM</text>
+    <text x="497" y="94" text-anchor="middle" fill="#e0e0e0">Bebatuan, kecil</text>
+    <text x="497" y="110" text-anchor="middle" fill="#e0e0e0">Merkurius–Mars</text>
+    <rect x="440" y="135" width="115" height="60" rx="8" fill="rgba(144,202,249,.15)" stroke="#90caf9" stroke-width="1"/>
+    <text x="497" y="153" text-anchor="middle" fill="#90caf9">PLANET LUAR</text>
+    <text x="497" y="169" text-anchor="middle" fill="#e0e0e0">Gas raksasa, besar</text>
+    <text x="497" y="185" text-anchor="middle" fill="#e0e0e0">Jupiter–Neptunus</text>
+    <rect x="580" y="97" width="105" height="60" rx="8" fill="rgba(129,199,132,.15)" stroke="#81c784" stroke-width="1"/>
+    <text x="632" y="115" text-anchor="middle" fill="#81c784">BUMI KITA</text>
+    <text x="632" y="131" text-anchor="middle" fill="#e0e0e0">Satu-satunya</text>
+    <text x="632" y="147" text-anchor="middle" fill="#e0e0e0">planet berkehidupan</text>
+  </g>
+</svg>`;
+}
+
+function svgRotasiRevolusi(){
+return `
+<svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram rotasi dan revolusi Bumi">
+  <rect width="700" height="340" fill="#0b1220" rx="18"/>
+  <g fill="#ffffff" opacity=".85">
+    <circle cx="40" cy="30" r="1.2"/><circle cx="150" cy="50" r="1"/><circle cx="400" cy="35" r="1.3"/>
+    <circle cx="600" cy="45" r="1"/><circle cx="250" cy="300" r="1.2"/><circle cx="550" cy="300" r="1"/>
+    <circle cx="350" cy="290" r="1"/>
+  </g>
+  <text x="140" y="30" text-anchor="middle" font-family="Baloo 2" font-size="16" font-weight="800" fill="#90caf9">ROTASI BUMI</text>
+  <text x="140" y="48" text-anchor="middle" font-family="Nunito" font-size="11" fill="#b0bec5">Bumi berputar pada porosnya (23 jam 56 menit)</text>
+  <circle cx="140" cy="140" r="55" fill="#42a5f5" stroke="#1565c0" stroke-width="2"/>
+  <path d="M 110 120 Q 130 105 150 118 L 165 130 Q 155 148 135 148 L 115 138 Z" fill="#66bb6a"/>
+  <path d="M 120 165 Q 140 155 158 162 L 160 178 Q 140 185 122 180 Z" fill="#66bb6a"/>
+  <path d="M 95 155 Q 105 148 118 152" fill="#66bb6a" opacity=".8"/>
+  <ellipse cx="140" cy="140" rx="55" ry="8" fill="none" stroke="#1565c0" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="140" y1="75" x2="140" y2="205" stroke="#ff5252" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <text x="155" y="72" font-family="Nunito" font-size="10" fill="#ff8a80">Poros</text>
+  <path d="M 200 130 A 60 60 0 0 1 200 165" fill="none" stroke="#ffeb3b" stroke-width="3" marker-end="url(#arrowY)"/>
+  <defs>
+    <marker id="arrowY" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" fill="#ffeb3b"/></marker>
+    <marker id="arrowO" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" fill="#ffb74d"/></marker>
+  </defs>
+  <text x="490" y="30" text-anchor="middle" font-family="Baloo 2" font-size="16" font-weight="800" fill="#ffcc80">REVOLUSI BUMI</text>
+  <text x="490" y="48" text-anchor="middle" font-family="Nunito" font-size="11" fill="#b0bec5">Bumi mengelilingi Matahari (365,25 hari)</text>
+  <circle cx="490" cy="160" r="42" fill="#ffb300"/>
+  <circle cx="490" cy="160" r="34" fill="#ffca28"/>
+  <circle cx="490" cy="160" r="24" fill="#fff176"/>
+  <text x="490" y="165" text-anchor="middle" font-family="Baloo 2" font-size="12" font-weight="800" fill="#7c2d12">Matahari</text>
+  <ellipse cx="490" cy="160" rx="130" ry="80" fill="none" stroke="#546e7a" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="360" cy="160" r="10" fill="#42a5f5" stroke="#1565c0" stroke-width="1.5"/>
+  <line x1="360" y1="143" x2="360" y2="177" stroke="#ff5252" stroke-width="1.5"/>
+  <text x="360" y="197" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Desember</text>
+  <circle cx="490" cy="240" r="10" fill="#42a5f5" stroke="#1565c0" stroke-width="1.5"/>
+  <line x1="485" y1="228" x2="495" y2="252" stroke="#ff5252" stroke-width="1.5"/>
+  <text x="490" y="263" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Maret</text>
+  <circle cx="620" cy="160" r="10" fill="#42a5f5" stroke="#1565c0" stroke-width="1.5"/>
+  <line x1="620" y1="143" x2="620" y2="177" stroke="#ff5252" stroke-width="1.5"/>
+  <text x="620" y="197" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">Juni</text>
+  <circle cx="490" cy="80" r="10" fill="#42a5f5" stroke="#1565c0" stroke-width="1.5"/>
+  <line x1="485" y1="68" x2="495" y2="92" stroke="#ff5252" stroke-width="1.5"/>
+  <text x="490" y="63" text-anchor="middle" font-family="Nunito" font-size="9" fill="#e0e0e0">September</text>
+  <path d="M 380 100 A 120 70 0 0 1 460 78" fill="none" stroke="#ffb74d" stroke-width="3" marker-end="url(#arrowO)"/>
+  <path d="M 620 200 A 130 80 0 0 1 540 233" fill="none" stroke="#ffb74d" stroke-width="3" marker-end="url(#arrowO)"/>
+</svg>`;
+}
+
+function svgAlveolus(){
+return `
+<svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pertukaran gas di alveolus">
+  <rect width="460" height="260" fill="#f6fbff" rx="16"/>
+  <circle cx="230" cy="130" r="90" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.5"/>
+  <text x="230" y="100" text-anchor="middle" font-family="Nunito" font-size="12" font-weight="800" fill="#0d47a1">Alveolus</text>
+  <path d="M 60 130 Q 110 90 160 130 T 260 130 T 360 130 T 400 150" fill="none" stroke="#c62828" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 60 160 Q 110 200 160 160 T 260 160 T 360 160 T 400 145" fill="none" stroke="#1565c0" stroke-width="12" stroke-linecap="round"/>
+  <g><text x="145" y="118" font-family="Nunito" font-size="13" font-weight="800" fill="#0d47a1">O₂</text>
+    <path d="M 160 115 L 200 100" stroke="#0d47a1" stroke-width="2" marker-end="url(#arrowY)"/></g>
+  <g><text x="255" y="118" font-family="Nunito" font-size="13" font-weight="800" fill="#b71c1c">CO₂</text>
+    <path d="M 240 100 L 210 88" stroke="#b71c1c" stroke-width="2"/></g>
+  <g font-family="Nunito" font-size="11" font-weight="700" fill="#37474f">
+    <text x="30" y="240">Pembuluh darah (merah: banyak O₂, biru: banyak CO₂)</text>
+    <text x="200" y="130" text-anchor="middle" font-family="Nunito" font-size="11" fill="#1e293b">Pertukaran O₂ & CO₂</text>
+  </g>
+</svg>`;
+}
+
+/* =========================================================
+   DATA MATERI & SOAL
+   ========================================================= */
+const DATA = {
+  1: {
+    title:"MAKANAN BERGIZI UNTUK KESEHATAN PENCERNAANKU", emoji:"🍎", color:"c1",
+    subs:[
+      { title:"Sistem Pencernaanku", icon:"🫀",
+        html:`
+          <p class="lead">Setiap kali kamu makan, tubuhmu bekerja keras memecah makanan menjadi bagian-bagian kecil yang bisa diserap. Proses itulah yang disebut <b>pencernaan</b>.</p>
+          <h3>🧠 Apa Itu Pencernaan?</h3>
+          <p>Pencernaan adalah proses mengubah makanan menjadi zat gizi yang dapat diserap oleh tubuh. Ada dua jenis:</p>
+          <ul>
+            <li><b>Pencernaan mekanis</b> — menghancurkan makanan secara fisik (gigi mengunyah, gerakan otot lambung).</li>
+            <li><b>Pencernaan kimiawi</b> — memecah makanan menggunakan enzim dan asam (amilase di mulut).</li>
+          </ul>
+          <h3>🛣️ Perjalanan Makanan di Tubuhmu</h3>
+          <ol class="steps">
+            <li><b>Mulut 👄</b> — gigi mengunyah, lidah mendorong makanan, enzim amilase (ptialin) mengubah amilum menjadi gula sederhana.</li>
+            <li><b>Kerongkongan (esofagus) 🚶</b> — makanan didorong ke lambung oleh gerakan <i>peristaltik</i>.</li>
+            <li><b>Lambung 🫙</b> — makanan diaduk dan dicampur HCl serta pepsin. Membutuhkan 2–4 jam.</li>
+            <li><b>Usus halus 🌀</b> — organ terpanjang (±6 meter), tempat penyerapan sari-sari makanan.</li>
+            <li><b>Usus besar 🧽</b> — panjang ±1,5 meter, menyerap air dan ion elektrolit.</li>
+            <li><b>Rektum & Anus 🚪</b> — penyimpanan sementara dan pengeluaran feses (defekasi).</li>
+          </ol>
+          <h3>🩺 Organ Pendukung</h3>
+          <p>Hati (liver) memproduksi empedu untuk mencerna lemak dan membantu penyerapan nutrisi, sekaligus melakukan detoksifikasi racun. Pankreas mengeluarkan enzim pencernaan.</p>
+          <div class="fact">💡 <b>Fakta Seru:</b> Jika dibentangkan, usus halus manusia bisa mencapai 6 meter lebih — lebih panjang dari sebuah mobil!</div>
+        `
+      },
+      { title:"Makanan Sehat", icon:"🥗",
+        html:`
+          <p class="lead">Makanan sehat bukan berarti mahal. Yang penting adalah <b>gizi seimbang</b>, yaitu makanan yang mengandung semua zat gizi sesuai kebutuhan tubuh.</p>
+          <h3>🥗 Tujuh Zat Gizi Utama</h3>
+          <ul>
+            <li><b>Karbohidrat</b> — sumber energi utama (nasi, jagung, ubi, roti). 🍚</li>
+            <li><b>Protein</b> — membangun dan memperbaiki sel (ikan, telur, tempe, tahu). 🐟</li>
+            <li><b>Lemak</b> — energi cadangan dan pelindung organ (minyak, kacang, alpukat). 🥑</li>
+            <li><b>Serat</b> — melancarkan pencernaan (sayur, gandum, buah). 🥦</li>
+            <li><b>Vitamin</b> — menjaga daya tahan tubuh (buah, sayur). 🍊</li>
+            <li><b>Mineral</b> — menjaga pertumbuhan & tulang (susu, buah, sayur). 🥛</li>
+            <li><b>Air</b> — melarutkan makanan dan menjaga suhu. Minum 8 gelas/hari. 💧</li>
+          </ul>
+          <h3>🍽️ Pedoman "Isi Piringku"</h3>
+          <div class="ilustrasi">${svgIsiPiringku()}<div class="caption">Gambar 1.1 Pedoman "Isi Piringku" dari Kementerian Kesehatan RI</div></div>
+          <ul>
+            <li>½ piring berisi sayur dan buah 🥦🍎</li>
+            <li>½ piring berisi makanan pokok dan lauk-pauk 🍚🍗</li>
+            <li>Ditambah aktivitas fisik 30 menit/hari, minum air 8 gelas, dan cuci tangan.</li>
+          </ul>
+          <h3>📦 Membaca Label Gizi Kemasan</h3>
+          <p>Perhatikan <b>Informasi Nilai Gizi</b>: takaran saji, kalori, lemak, protein, karbohidrat, gula, dan natrium. Ingat <b>G4-G1-L5</b>: Gula 4 sdm, Garam 1 sdt, Lemak 5 sdm per hari.</p>
+          <div class="warn">⚠️ <b>Hati-hati!</b> <i>Junk food</i> tinggi kalori, gula, garam, dan lemak. Konsumsi hanya sesekali (rekreasional), bukan setiap hari.</div>
+        `
+      },
+      { title:"Pencernaan Sehat", icon:"💪",
+        html:`
+          <p class="lead">Sistem pencernaan yang sehat membuat tubuh kuat dan energik. Yuk, jaga pencernaanmu dengan kebiasaan baik setiap hari!</p>
+          <h3>✅ Kebiasaan Baik untuk Pencernaan</h3>
+          <ul>
+            <li>Makan teratur 3 kali sehari dan tidak berlebihan 🕐</li>
+            <li>Cuci tangan dengan sabun sebelum makan 🧼</li>
+            <li>Makan makanan bergizi seimbang 🥗</li>
+            <li>Minum air putih 6–8 gelas sehari 💧</li>
+            <li>Mengunyah makanan dengan baik 🦷</li>
+            <li>Olahraga teratur dan istirahat cukup 🏃</li>
+          </ul>
+          <h3>🩺 Penyakit pada Sistem Pencernaan</h3>
+          <ul>
+            <li><b>Gastritis (Maag)</b> — iritasi dinding lambung, gejala perih dan mual.</li>
+            <li><b>GERD</b> — asam lambung naik ke tenggorokan, terasa terbakar di dada.</li>
+            <li><b>Obesitas</b> — berat badan melebihi batas normal karena penumpukan lemak.</li>
+            <li><b>Diabetes Melitus</b> — kadar gula darah tinggi karena insulin tidak mencukupi.</li>
+            <li><b>Diare</b> — BAB encer terus-menerus, sering karena infeksi virus/bakteri.</li>
+            <li><b>Sembelit</b> — sulit BAB karena kurang serat dan air.</li>
+          </ul>
+          <div class="warn">⚠️ <b>Bahaya Tren Mokbang!</b> Konten makan porsi raksasa bisa memicu gangguan lambung. Tiru pola makan sehat, bukan tren berbahaya.</div>
+          <div class="tip">🌟 <b>Tips:</b> Perbanyak buah dan sayur berserat seperti pepaya, pisang, wortel, dan bayam!</div>
+        `
+      }
+    ],
+    quiz:[
+      { q:"Organ pertama yang dilalui makanan saat masuk ke dalam tubuh adalah ...", opts:["Kerongkongan","Mulut","Lambung","Usus halus"], ans:1, exp:"Makanan masuk melalui mulut. Di sini terjadi pencernaan mekanis oleh gigi dan pencernaan kimiawi oleh enzim amilase." },
+      { q:"Enzim amilase (ptialin) di dalam mulut berfungsi mengubah ...", opts:["Protein menjadi asam amino","Lemak menjadi asam lemak","Amilum menjadi gula sederhana","Air menjadi oksigen"], ans:2, exp:"Enzim amilase atau ptialin mengubah amilum (zat tepung) menjadi gula sederhana agar mudah dicerna." },
+      { q:"Makanan didorong dari kerongkongan menuju lambung oleh gerakan ...", opts:["Peristaltik","Diafragma","Rotasi","Refleks"], ans:0, exp:"Gerakan peristaltik adalah gerakan otot kerongkongan yang meremas dan mendorong makanan menuju lambung." },
+      { q:"Asam klorida (HCl) yang dihasilkan lambung berfungsi untuk ...", opts:["Menyerap air","Membunuh kuman dan mengaktifkan pepsin","Menghasilkan empedu","Menyerap sari makanan"], ans:1, exp:"HCl membunuh kuman yang masuk bersama makanan dan mengaktifkan enzim pepsin untuk memecah protein." },
+      { q:"Penyerapan sari-sari makanan terjadi di ...", opts:["Lambung","Usus besar","Usus halus","Anus"], ans:2, exp:"Usus halus (±6 meter) adalah tempat utama penyerapan sari-sari makanan melalui dinding usus." },
+      { q:"Fungsi utama usus besar dalam pencernaan adalah ...", opts:["Menyerap air dan ion elektrolit","Menghasilkan enzim amilase","Memecah protein","Menyaring udara"], ans:0, exp:"Usus besar (±1,5 meter) menyerap air dan ion elektrolit dari sisa makanan, lalu membentuk feses." },
+      { q:"Zat gizi yang menjadi sumber energi utama bagi tubuh adalah ...", opts:["Protein","Karbohidrat","Vitamin","Mineral"], ans:1, exp:"Karbohidrat adalah sumber energi utama. Contohnya nasi, jagung, ubi, dan roti." },
+      { q:"Menurut pedoman Isi Piringku, setengah piring kita sebaiknya berisi ...", opts:["Nasi dan lauk pauk","Sayur dan buah","Gorengan dan sosis","Kerupuk dan sambal"], ans:1, exp:"Setengah piring diisi sayur dan buah (sumber serat, vitamin, mineral), setengahnya lagi makanan pokok dan lauk-pauk." },
+      { q:"Penyakit yang timbul karena kurang makan makanan berserat dan kurang minum air adalah ...", opts:["Diare","Sembelit","Maag","Karies gigi"], ans:1, exp:"Sembelit terjadi karena kurang serat dan air, sehingga feses menjadi keras dan sulit dikeluarkan." },
+      { q:"Anjuran Kementerian Kesehatan tentang batas konsumsi gula per hari adalah ...", opts:["4 sendok makan","10 sendok makan","1 sendok teh","5 sendok makan"], ans:0, exp:"Anjuran G4-G1-L5: Gula 4 sendok makan, Garam 1 sendok teh, Lemak 5 sendok makan per hari." }
+    ]
+  },
+  2: {
+    title:"TARIK DAN EMBUSKAN", emoji:"🫁", color:"c2",
+    subs:[
+      { title:"Perjalanan Udara", icon:"🌬️",
+        html:`
+          <p class="lead">Setiap menit, kamu bernapas sekitar 12–20 kali tanpa sadar. Udara yang kamu hirup melakukan perjalanan panjang di dalam tubuh.</p>
+          <div class="ilustrasi">${svgPernapasan()}<div class="caption">Gambar 2.1 Organ-organ penyusun sistem pernapasan manusia</div></div>
+          <h3>🌬️ Organ Pernapasan Manusia</h3>
+          <ol class="steps">
+            <li><b>Hidung 👃</b> — udara disaring rambut hidung, dihangatkan dan dilembapkan oleh selaput lendir.</li>
+            <li><b>Laring 🗣️</b> — ada katup <i>epiglotis</i> agar tidak tersedak dan pita suara penghasil suara.</li>
+            <li><b>Trakea 🛤️</b> — tabung yang mengalirkan udara ke bronkus.</li>
+            <li><b>Bronkus & Bronkiolus 🌿</b> — cabang dan anak cabang menuju paru-paru.</li>
+            <li><b>Alveoli 🫧</b> — kantung kecil tempat pertukaran gas O₂ dan CO₂.</li>
+            <li><b>Diafragma 💪</b> — otot di bawah paru-paru yang mengatur proses bernapas.</li>
+          </ol>
+          <h3>🔄 Pertukaran Gas di Alveolus</h3>
+          <div class="ilustrasi">${svgAlveolus()}<div class="caption">Gambar 2.2 Pertukaran O₂ dan CO₂ yang terjadi di alveolus</div></div>
+          <p><b>Inspirasi:</b> Otot diafragma berkontraksi, tulang rusuk terangkat, rongga dada membesar → udara masuk.</p>
+          <p><b>Ekspirasi:</b> Diafragma relaksasi, rongga dada mengecil → CO₂ dan uap air terdorong keluar.</p>
+          <div class="fact">💡 <b>Fakta Seru:</b> Paru-paru manusia memiliki sekitar 300 juta alveolus!</div>
+        `
+      },
+      { title:"Bersih Udaranya", icon:"🌳",
+        html:`
+          <p class="lead">Udara bersih adalah hak semua makhluk hidup. Sayangnya, banyak aktivitas manusia yang membuat udara menjadi kotor.</p>
+          <h3>🏭 Penyebab Udara Kotor</h3>
+          <ul>
+            <li>Asap kendaraan bermotor 🚗</li>
+            <li>Asap pabrik dan pembakaran sampah 🏭</li>
+            <li>Asap rokok dan vape 🚬</li>
+            <li>Pembakaran hutan 🔥</li>
+            <li>Debu dan sampah berserakan 🗑️</li>
+          </ul>
+          <h3>🦠 Gangguan pada Sistem Pernapasan</h3>
+          <ul>
+            <li><b>ISPA</b> — batuk, pilek, sesak napas.</li>
+            <li><b>Asma</b> — saluran napas menyempit, dipicu debu/udara dingin.</li>
+            <li><b>Influenza</b> — infeksi virus, gejala demam, batuk, pilek.</li>
+            <li><b>Tuberkulosis (TBC)</b> — infeksi bakteri <i>Mycobacterium</i>.</li>
+            <li><b>Pneumonia</b> — peradangan pada alveoli.</li>
+            <li><b>Kanker paru-paru</b> — sering dialami perokok berat.</li>
+          </ul>
+          <h3>🌱 Cara Menjaga Udara Tetap Bersih</h3>
+          <ul>
+            <li>Menanam dan merawat pohon 🌳</li>
+            <li>Tidak membakar sampah sembarangan 🚫</li>
+            <li>Menggunakan transportasi umum / bersepeda 🚲</li>
+            <li>Memakai masker saat udara berdebu 😷</li>
+            <li>Tidak merokok 🚭</li>
+            <li>Mengurangi plastik sekali pakai ♻️</li>
+          </ul>
+          <div class="tip">🌟 <b>Ingat:</b> Satu pohon besar dapat menghasilkan oksigen untuk kebutuhan 2 orang setiap hari!</div>
+        `
+      },
+      { title:"Gaya Hidup Sehat", icon:"🏃",
+        html:`
+          <p class="lead">Gaya hidup adalah kebiasaan yang kamu lakukan setiap hari. Gaya hidup sehat membuat tubuhmu kuat, sedangkan gaya hidup tidak sehat mendatangkan penyakit.</p>
+          <h3>💨 Kapasitas Paru-Paru</h3>
+          <p><b>Kapasitas paru-paru</b> adalah kemampuan paru-paru menampung udara. Semakin rajin berolahraga, semakin besar kapasitasnya. Faktor lain: usia, jenis kelamin, dan kondisi kesehatan.</p>
+          <h3>❌ Gaya Hidup Tidak Sehat</h3>
+          <ul>
+            <li>Merokok dan menggunakan vape 🚬</li>
+            <li>Jarang berolahraga 🛋️</li>
+            <li>Tempat tinggal lembap dan berdebu 🦠</li>
+            <li>Sering begadang dan kurang tidur 😴</li>
+            <li>Makan makanan cepat saji berlebihan 🍔</li>
+          </ul>
+          <h3>✅ Gaya Hidup Sehat</h3>
+          <ul>
+            <li>Olahraga minimal 30 menit setiap hari 🏃‍♂️</li>
+            <li>Tidur 8–10 jam bagi anak usia SD 😴</li>
+            <li>Makan bergizi seimbang 🥗</li>
+            <li>Minum air putih yang cukup 💧</li>
+            <li>Menjaga kebersihan diri dan lingkungan 🧼</li>
+          </ul>
+          <div class="warn">⚠️ <b>Bahaya Rokok:</b> Mengandung <b>nikotin</b> (ketagihan), <b>tar</b> (kanker), dan <b>karbon monoksida</b> (mengikat oksigen). Perokok pasif juga berisiko!</div>
+        `
+      }
+    ],
+    quiz:[
+      { q:"Udara pernapasan pertama kali masuk melalui ...", opts:["Mulut","Hidung","Trakea","Paru-paru"], ans:1, exp:"Udara masuk melalui hidung agar disaring oleh rambut hidung, dihangatkan, dan dilembapkan." },
+      { q:"Rambut halus di dalam hidung berfungsi untuk ...", opts:["Menghangatkan udara","Menyaring kotoran yang masuk","Menghasilkan suara","Menyerap oksigen"], ans:1, exp:"Rambut hidung dan lendir menyaring debu serta kotoran agar tidak masuk ke saluran pernapasan." },
+      { q:"Pertukaran oksigen dan karbondioksida terjadi di ...", opts:["Bronkus","Trakea","Alveolus","Laring"], ans:2, exp:"Alveolus adalah gelembung kecil di paru-paru tempat terjadinya pertukaran gas O₂ dan CO₂." },
+      { q:"Cabang tenggorokan yang menuju paru-paru kanan dan kiri disebut ...", opts:["Bronkus","Alveolus","Diafragma","Silia"], ans:0, exp:"Trakea bercabang menjadi dua bronkus, masing-masing menuju paru-paru kanan dan kiri." },
+      { q:"Otot yang berperan dalam pernapasan perut adalah ...", opts:["Otot antar tulang rusuk","Diafragma","Otot leher","Otot jantung"], ans:1, exp:"Pernapasan perut menggunakan otot diafragma yang membatasi rongga dada dan rongga perut." },
+      { q:"Saat menarik napas (inspirasi), otot diafragma akan ...", opts:["Relaksasi, rongga dada mengecil","Berkontraksi, rongga dada membesar","Berhenti bekerja","Mengecil dan mengeras"], ans:1, exp:"Saat inspirasi, diafragma berkontraksi dan bergerak ke bawah, rongga dada membesar sehingga udara masuk." },
+      { q:"Zat berbahaya dalam rokok yang menyebabkan ketagihan adalah ...", opts:["Tar","Nikotin","Karbon monoksida","Oksigen"], ans:1, exp:"Nikotin bersifat adiktif sehingga membuat perokok sulit berhenti." },
+      { q:"Berikut yang merupakan cara menjaga udara tetap bersih adalah ...", opts:["Membakar sampah di halaman","Menanam pohon di sekitar rumah","Merokok di dalam rumah","Menggunakan kendaraan pribadi terus-menerus"], ans:1, exp:"Menanam pohon membantu menghasilkan oksigen dan menyerap polutan sehingga udara lebih bersih." },
+      { q:"Penyakit yang ditandai dengan penyempitan saluran napas sehingga terasa sesak adalah ...", opts:["Asma","Diare","Maag","Sembelit"], ans:0, exp:"Asma terjadi karena saluran napas menyempit dan membengkak, sehingga penderitanya sulit bernapas." },
+      { q:"Gaya hidup sehat untuk menjaga organ pernapasan adalah ...", opts:["Sering begadang","Merokok sejak dini","Rutin berolahraga dan tidak merokok","Sering menghirup asap kendaraan"], ans:2, exp:"Olahraga rutin melatih kapasitas paru-paru, sedangkan tidak merokok melindungi paru-paru dari kerusakan." }
+    ]
+  },
+  3: {
+    title:"JEJAK SANG PAHLAWAN", emoji:"🏛️", color:"c3",
+    subs:[
+      { title:"Masa Penjajahan", icon:"🚢",
+        html:`
+          <p class="lead">Sebelum menjadi negara merdeka, Indonesia mengalami penjajahan selama lebih dari 300 tahun. Setiap daerah memiliki kisah perjuangannya sendiri.</p>
+          <h3>🚢 Bangsa-Bangsa yang Menjajah Indonesia</h3>
+          <ul>
+            <li><b>Portugis (1511)</b> — pertama kali datang ke Maluku untuk mencari rempah-rempah.</li>
+            <li><b>Spanyol (1521)</b> — datang ke Maluku dan bersaing dengan Portugis.</li>
+            <li><b>Belanda (1596)</b> — menjajah paling lama, sekitar 350 tahun.</li>
+            <li><b>Inggris (1811–1816)</b> — di bawah Thomas Stamford Raffles.</li>
+            <li><b>Jepang (1942–1945)</b> — menjajah selama 3,5 tahun.</li>
+          </ul>
+          <h3>💰 VOC dan Penindasan</h3>
+          <p>Pada tahun <b>1602</b>, Belanda mendirikan <b>VOC</b> (Vereenigde Oostindische Compagnie). VOC memonopoli perdagangan rempah-rempah dan menindas rakyat.</p>
+          <h3>😢 Sistem Penjajahan yang Menyiksa</h3>
+          <ul>
+            <li><b>Kerja Rodi</b> — kerja paksa tanpa upah, misalnya membangun Jalan Raya Pos Anyer–Panarukan.</li>
+            <li><b>Tanam Paksa (Cultuurstelsel)</b> — rakyat wajib menanam tanaman ekspor untuk Belanda (Van den Bosch, 1830).</li>
+            <li><b>Monopoli perdagangan</b> dan <b>Romusha</b> pada masa pendudukan Jepang.</li>
+          </ul>
+          <h3>📜 Politik Etis (Politik Balas Budi)</h3>
+          <p>Kritik dari <b>Multatuli</b> (buku <i>Max Havelaar</i>), <b>C.Th. van Deventer</b>, dan <b>Pieter Brooshooft</b> melahirkan <b>Trias Van Deventer</b>:</p>
+          <ul>
+            <li><b>Irigasi</b> — membangun bendungan dan saluran air.</li>
+            <li><b>Edukasi</b> — mendirikan sekolah rakyat, awal pergerakan nasional!</li>
+            <li><b>Emigrasi</b> — memindahkan penduduk Jawa dan Madura ke pulau lain.</li>
+          </ul>
+          <div class="fact">💡 <b>Fakta Seru:</b> Jalan Raya Pos dari Anyer (Banten) hingga Panarukan (Jawa Timur) panjangnya ±1.000 km dan dibangun hanya dalam waktu sekitar satu tahun!</div>
+        `
+      },
+      { title:"Para Pahlawan", icon:"🦸",
+        html:`
+          <p class="lead">Perlawanan terhadap penjajah terjadi di hampir seluruh daerah di Indonesia. Para pahlawan rela berkorban demi kemerdekaan bangsa.</p>
+          <h3>🦸 Pahlawan dari Berbagai Daerah</h3>
+          <ul>
+            <li><b>Kapitan Pattimura</b> — Maluku (1817), melawan Belanda di Saparua. 🏝️</li>
+            <li><b>Tuanku Imam Bonjol</b> — Sumatera Barat, Perang Padri (1821–1837). 🕌</li>
+            <li><b>Pangeran Diponegoro</b> — Yogyakarta, Perang Jawa (1825–1830). ⚔️</li>
+            <li><b>Cut Nyak Dhien</b> — Aceh, perang gerilya melawan Belanda. 🌺</li>
+            <li><b>Sultan Hasanuddin</b> — Sulawesi Selatan, "Ayam Jantan dari Timur". 🐓</li>
+            <li><b>Pangeran Antasari</b> — Kalimantan Selatan, Perang Banjar. 🌊</li>
+            <li><b>I Gusti Ngurah Rai</b> — Bali, Puputan Margarana. 🏵️</li>
+            <li><b>Si Singamangaraja XII</b> — Sumatera Utara, Tanah Batak. 🌲</li>
+          </ul>
+          <h3>🌟 Pahlawan Nasional Modern</h3>
+          <ul>
+            <li><b>Abdul Moeis</b> — Bukittinggi, pahlawan nasional pertama.</li>
+            <li><b>Ki Hadjar Dewantara</b> — Yogyakarta, Bapak Pendidikan Indonesia.</li>
+            <li><b>Sam Ratulangi</b> — Sulawesi Utara, tokoh PPPKI.</li>
+            <li><b>Prof. Dr. W.Z. Johannes</b> — NTT, ahli radiologi pertama Indonesia.</li>
+            <li><b>Johannes Leimena</b> — Maluku, penggagas Puskesmas.</li>
+            <li><b>Silas Papare</b> — Papua, memperjuangkan penyatuan Irian.</li>
+            <li><b>H.R. Rasuna Said</b> — Sumatera Barat, pejuang pendidikan perempuan.</li>
+            <li><b>M. Zainuddin Abdul Madjid</b> — NTB, pendiri Nahdlatul Wathan.</li>
+          </ul>
+          <div class="tip">🌟 <b>Ingat:</b> Pahlawan tidak hanya yang mengangkat senjata. Guru, dokter, dan petani juga bisa menjadi pahlawan bagi bangsa!</div>
+        `
+      },
+      { title:"Jejak Masa Kini", icon:"🏛️",
+        html:`
+          <p class="lead">Perjuangan para pahlawan meninggalkan jejak yang bisa kita lihat dan rasakan hingga sekarang.</p>
+          <h3>🏛️ Warisan Para Pahlawan</h3>
+          <ul>
+            <li><b>Deklarasi Djuanda (1957)</b> oleh Ir. H. Juanda — laut antarpulau sebagai wilayah kedaulatan Indonesia.</li>
+            <li><b>Tut Wuri Handayani</b> oleh Ki Hadjar Dewantara — semboyan pendidikan Indonesia.</li>
+            <li><b>Puskesmas</b> oleh Johannes Leimena — fasilitas kesehatan dekat masyarakat.</li>
+            <li><b>Nama jalan & gedung</b> — Jalan Diponegoro, Jalan Pattimura, Bandara Sultan Hasanuddin.</li>
+            <li><b>Hari besar nasional</b> — Hari Pahlawan (10 November), Hari Kemerdekaan (17 Agustus).</li>
+            <li><b>Makam pahlawan</b> — Taman Makam Pahlawan Kalibata dan di setiap daerah.</li>
+          </ul>
+          <h3>🤝 Cara Meneladani Para Pahlawan</h3>
+          <ul>
+            <li>Belajar dengan rajin dan sungguh-sungguh 📚</li>
+            <li>Menjaga persatuan dan tidak mudah bertengkar 🤝</li>
+            <li>Mencintai dan menggunakan produk dalam negeri 🇮🇩</li>
+            <li>Menjaga kebersihan lingkungan 🧹</li>
+            <li>Menghormati jasa pahlawan dengan mengikuti upacara 🕯️</li>
+            <li>Berani membela kebenaran dan keadilan ⚖️</li>
+          </ul>
+          <div class="fact">💡 <b>Fakta Seru:</b> Sampai tahun 2023, Indonesia memiliki 206 pahlawan nasional dari berbagai daerah!</div>
+        `
+      }
+    ],
+    quiz:[
+      { q:"Bangsa Eropa pertama yang datang ke Indonesia untuk mencari rempah-rempah adalah ...", opts:["Belanda","Portugis","Jepang","Inggris"], ans:1, exp:"Portugis tiba di Maluku pada tahun 1511 untuk mencari rempah-rempah yang sangat berharga di Eropa." },
+      { q:"VOC didirikan oleh Belanda pada tahun ...", opts:["1511","1596","1602","1942"], ans:2, exp:"VOC didirikan pada 20 Maret 1602 sebagai kongsi dagang Belanda di Asia." },
+      { q:"Kerja paksa tanpa upah pada masa penjajahan Belanda disebut ...", opts:["Tanam paksa","Romusha","Kerja rodi","Monopoli"], ans:2, exp:"Kerja rodi adalah kerja paksa tanpa upah, contohnya pembangunan Jalan Raya Pos Anyer–Panarukan." },
+      { q:"Sistem tanam paksa (cultuurstelsel) dipelopori oleh ...", opts:["Daendels","Van den Bosch","Raffles","Jan Pieterszoon Coen"], ans:1, exp:"Johannes van den Bosch mencetuskan cultuurstelsel pada tahun 1830." },
+      { q:"Tokoh Belanda yang menulis buku Max Havelaar adalah ...", opts:["Van Deventer","Multatuli (Eduard Douwes Dekker)","Pieter Brooshooft","Raffles"], ans:1, exp:"Multatuli (Eduard Douwes Dekker) menulis Max Havelaar yang mengkritik penderitaan rakyat Banten akibat tanam paksa." },
+      { q:"Program Politik Etis (Trias Van Deventer) terdiri dari ...", opts:["Irigasi, Edukasi, Emigrasi","Irigasi, Industri, Emigrasi","Edukasi, Monopoli, Pajak","Irigasi, Edukasi, Transmigrasi"], ans:0, exp:"Trias Van Deventer: Irigasi (pengairan), Edukasi (pendidikan), dan Emigrasi (perpindahan penduduk)." },
+      { q:"Pahlawan yang memimpin perlawanan rakyat Maluku terhadap Belanda pada 1817 adalah ...", opts:["Cut Nyak Dhien","Kapitan Pattimura","Pangeran Antasari","I Gusti Ngurah Rai"], ans:1, exp:"Kapitan Pattimura memimpin perlawanan rakyat Maluku di Saparua pada tahun 1817." },
+      { q:"Pahlawan yang dijuluki \"Ayam Jantan dari Timur\" adalah ...", opts:["Tuanku Imam Bonjol","Sultan Hasanuddin","Pangeran Diponegoro","Si Singamangaraja XII"], ans:1, exp:"Sultan Hasanuddin dari Gowa, Sulawesi Selatan, dijuluki Ayam Jantan dari Timur karena keberaniannya." },
+      { q:"Tokoh yang mencetuskan Deklarasi Djuanda tentang batas wilayah laut Indonesia adalah ...", opts:["Ir. H. Juanda","Ki Hadjar Dewantara","Johannes Leimena","Silas Papare"], ans:0, exp:"Ir. H. Juanda mencetuskan Deklarasi Djuanda (1957) yang menegaskan laut antarpulau sebagai wilayah Indonesia." },
+      { q:"Cara pelajar meneladani semangat para pahlawan adalah ...", opts:["Berkelahi dengan teman","Malas belajar","Rajin belajar dan menjaga persatuan","Merusak fasilitas umum"], ans:2, exp:"Meneladani pahlawan dapat dilakukan dengan rajin belajar, menjaga persatuan, dan mencintai tanah air." }
+    ]
+  },
+  4: {
+    title:"KEARIFAN LOKAL, WARISAN LELUHUR", emoji:"🎭", color:"c4",
+    subs:[
+      { title:"Jejak Budaya", icon:"🏮",
+        html:`
+          <p class="lead">Kearifan lokal terdapat di dalam budaya dan tradisi yang diwariskan turun-temurun, membentuk <b>identitas suatu daerah</b>.</p>
+          <h3>📚 Budaya dan Tradisi</h3>
+          <ul>
+            <li><b>Budaya</b> — cara hidup sekelompok orang yang diwariskan ke generasi berikutnya (nilai, pengetahuan, norma, kepercayaan, hukum, adat, bahasa).</li>
+            <li><b>Tradisi</b> — kebiasaan turun-temurun dari nenek moyang yang masih dijalankan.</li>
+          </ul>
+          <h3>💡 Faktor Budaya dan Tradisi Masih Dilestarikan</h3>
+          <ul>
+            <li>Memiliki nilai yang mendalam (agama, moral, adat).</li>
+            <li>Menjadi identitas daerah yang dikenal daerah lain (Sekaten, Pasola).</li>
+            <li>Penghormatan terhadap leluhur.</li>
+            <li>Diajarkan turun-temurun (halal bihalal, cium tangan, permainan tradisional).</li>
+            <li>Digunakan di masyarakat (malam baina, ngaben, bakar batu, THR, syukuran panen).</li>
+            <li>Mampu beradaptasi dengan teknologi (ulos jadi fashion, kebaya modern, noken Papua).</li>
+          </ul>
+          <h3>🌾 Contoh Kearifan Lokal</h3>
+          <ul>
+            <li><b>Subak</b> (Bali) — sistem irigasi tradisional, warisan UNESCO 2012.</li>
+            <li><b>Sasi Laut</b> (Maluku) — aturan waktu pengambilan sumber daya laut.</li>
+            <li><b>Mappalette Bola</b> (Bugis) — tradisi pindah rumah gotong royong.</li>
+            <li><b>Kema Uma Gua</b> (NTT) — tradisi mengatur siklus tanam padi.</li>
+          </ul>
+          <div class="fact">💡 <b>Fakta Seru:</b> Permainan tradisional petak umpet memiliki banyak nama daerah: ucing sumput (Sunda), petak benteng (Jawa), bapatakan (Kalimantan), enggo-enggo (Sulawesi).</div>
+        `
+      },
+      { title:"Warna Kearifan", icon:"🌈",
+        html:`
+          <p class="lead">Indonesia memiliki ribuan budaya dan tradisi. Beberapa memiliki makna yang sama, namun praktik yang berbeda-beda.</p>
+          <h3>🤝 Nilai-Nilai Kearifan Lokal</h3>
+          <ul>
+            <li><b>Gotong royong</b> — bekerja sama untuk kepentingan bersama.</li>
+            <li><b>Musyawarah</b> — mengambil keputusan bersama.</li>
+            <li><b>Saling menghargai</b> — menghormati perbedaan.</li>
+            <li><b>Menghormati leluhur</b> — mengenang jasa pendahulu.</li>
+            <li><b>Pelestarian alam</b> — menjaga lingkungan tetap lestari.</li>
+            <li><b>Kebersamaan</b> — hidup rukun dalam masyarakat.</li>
+            <li><b>Keadilan sosial</b> — berbagi secara adil dan merata.</li>
+          </ul>
+          <h3>🏝️ Contoh Tradisi: Mane'e</h3>
+          <p>Tradisi menangkap ikan di laut yang diawali dengan doa sesepuh adat, menggunakan janur kelapa sebagai penggiring ikan. Hasil tangkapan dibagikan merata — mencerminkan nilai <b>pelestarian lingkungan laut, gotong royong, kebersamaan, dan keadilan sosial</b>.</p>
+          <h3>🎮 Permainan Tradisional dan Alam</h3>
+          <p>Permainan seperti petak umpet, gobak sodor, dan lompat tali mengajak anak-anak <b>mengenal alam dan lingkungan</b>. Mereka belajar berinteraksi, mengamati, dan menjaga tempat bermainnya.</p>
+          <div class="tip">🌟 <b>Ingat:</b> Nilai-nilai kearifan lokal membentuk karakter dan identitas daerahmu!</div>
+        `
+      },
+      { title:"Kebersamaan", icon:"🤝",
+        html:`
+          <p class="lead">Semboyan negara kita, <b>Bhinneka Tunggal Ika</b>, menggambarkan bahwa meskipun Indonesia memiliki ragam budaya dan tradisi, kita tetap satu kesatuan.</p>
+          <h3>🏛️ Belajar Toleransi dari Mataram Kuno</h3>
+          <p>Kerajaan Mataram Kuno (abad 8–11 M) adalah bukti sejarah toleransi beragama. Raja <b>Rakai Pikatan</b> (Hindu) menikah dengan <b>Pramodawardhani</b> (Buddha). Mereka membangun <b>Candi Plaosan</b> — memadukan gaya Hindu dan Buddha. Juga merampungkan Candi Borobudur (Buddha) dan Candi Prambanan (Hindu).</p>
+          <h3>🌟 Hal yang Menyatukan Keberagaman</h3>
+          <ul>
+            <li><b>Toleransi</b> — menghormati perbedaan agama, suku, budaya, dan pendapat.</li>
+            <li><b>Bahasa Indonesia</b> — bahasa persatuan.</li>
+            <li><b>Pancasila dan Bhinneka Tunggal Ika</b> — dasar dan semboyan negara.</li>
+            <li><b>Rasa persaudaraan</b> — meski berbeda, kita satu bangsa.</li>
+          </ul>
+          <h3>🤝 Cara Menjaga Persatuan</h3>
+          <ul>
+            <li>Tidak membeda-bedakan teman 🧑‍🤝‍🧑</li>
+            <li>Belajar bahasa dan budaya daerah lain 📖</li>
+            <li>Menghargai logat dan kebiasaan teman 😊</li>
+            <li>Bekerja sama dalam kegiatan sekolah 🏫</li>
+            <li>Menjadi contoh toleransi di keluarga dan masyarakat ❤️</li>
+          </ul>
+          <div class="tip">🌟 <b>Refleksi:</b> Kelasmu adalah gambaran kecil Indonesia. Jika kita bisa hidup rukun di kelas, kita bisa hidup rukun sebagai bangsa!</div>
+        `
+      }
+    ],
+    quiz:[
+      { q:"Budaya dapat diartikan sebagai ...", opts:["Kebiasaan turun-temurun tanpa makna","Cara hidup sekelompok orang yang diwariskan ke generasi berikutnya","Pakaian adat suatu daerah","Bahasa daerah tertentu"], ans:1, exp:"Budaya meliputi nilai, pengetahuan, norma, kepercayaan, hukum, adat istiadat, dan bahasa yang diwariskan." },
+      { q:"Sistem irigasi tradisional Bali yang diakui UNESCO tahun 2012 adalah ...", opts:["Sasi","Subak","Mane'e","Mappalette Bola"], ans:1, exp:"Subak mencerminkan gotong royong, demokrasi, dan nilai spiritual." },
+      { q:"Tradisi Sasi Laut berasal dari daerah ...", opts:["Bali","Maluku","Sulawesi Selatan","Nusa Tenggara Timur"], ans:1, exp:"Sasi Laut dari Maluku mengatur waktu pengambilan sumber daya laut agar tetap lestari." },
+      { q:"Tradisi pindah rumah Suku Bugis yang melibatkan seluruh warga kampung disebut ...", opts:["Ngaben","Mappalette Bola","Mane'e","Rambu Solo"], ans:1, exp:"Mappalette Bola dikerjakan bergotong royong oleh seluruh warga kampung." },
+      { q:"Nilai kearifan lokal yang terkandung dalam tradisi Mane'e adalah ...", opts:["Persaingan dan kekayaan pribadi","Pelestarian lingkungan laut, gotong royong, dan keadilan sosial","Kemewahan dan kehormatan individu","Kekuasaan dan kekayaan"], ans:1, exp:"Mane'e mengajarkan pelestarian lingkungan laut, gotong royong, kebersamaan, dan keadilan sosial." },
+      { q:"Candi Plaosan merupakan bukti toleransi beragama pada masa ...", opts:["Kerajaan Majapahit","Kerajaan Sriwijaya","Kerajaan Mataram Kuno","Kerajaan Demak"], ans:2, exp:"Candi Plaosan dibangun pada masa Mataram Kuno oleh Rakai Pikatan (Hindu) dan Pramodawardhani (Buddha)." },
+      { q:"Raja Mataram Kuno yang menikah dengan Pramodawardhani adalah ...", opts:["Raja Sanjaya","Rakai Pikatan","Raja Panangkaran","Raja Balitung"], ans:1, exp:"Rakai Pikatan dari Dinasti Sanjaya (Hindu) menikah dengan Pramodawardhani dari Dinasti Syailendra (Buddha)." },
+      { q:"Semboyan negara Indonesia yang menggambarkan persatuan dalam keberagaman adalah ...", opts:["Tut Wuri Handayani","Bhinneka Tunggal Ika","Garuda Pancasila","Ing Ngarsa Sung Tuladha"], ans:1, exp:"Bhinneka Tunggal Ika berarti berbeda-beda tetapi tetap satu." },
+      { q:"Salah satu cara menjaga persatuan di sekolah yang beragam adalah ...", opts:["Hanya berteman dengan yang satu suku","Mengejek logat teman","Menghargai perbedaan bahasa dan budaya","Menolak pelajaran bahasa daerah"], ans:2, exp:"Menghargai perbedaan bahasa dan budaya teman adalah wujud toleransi yang memperkuat persatuan." },
+      { q:"Teknologi dapat membantu melestarikan budaya dengan cara ...", opts:["Menghilangkan tradisi lama","Mengenalkan dan memasarkan budaya ke masyarakat luas","Mengganti budaya dengan budaya asing","Melarang upacara adat"], ans:1, exp:"Media sosial dapat memperkenalkan budaya ke masyarakat luas, contohnya noken Papua." }
+    ]
+  },
+  5: {
+    title:"ENERGI UNTUK MASA DEPAN", emoji:"⚡", color:"c5",
+    subs:[
+      { title:"Energi Kerak Bumi", icon:"🛢️",
+        html:`
+          <p class="lead">Bensin, solar, minyak tanah, dan elpiji berasal dari minyak bumi. Selain itu ada batu bara dan gas alam. Ketiganya disebut <b>energi fosil</b>.</p>
+          <h3>⛏️ Apa Itu Energi Fosil?</h3>
+          <p>Energi fosil berasal dari makhluk hidup yang telah mati dan tertimbun tanah, pasir, serta batuan sedimen selama <b>jutaan tahun</b>. Melalui pemanasan dan perubahan kimiawi, terbentuklah minyak bumi, batu bara, dan gas alam.</p>
+          <h3>⏳ Apakah Energi Fosil Dapat Habis?</h3>
+          <p>Ya! Energi fosil termasuk <b>energi tak terbarukan</b>. Estimasi sisa waktu ketersediaan:</p>
+          <ul>
+            <li><b>Minyak bumi:</b> 133–139 tahun</li>
+            <li><b>Batu bara:</b> 47–56 tahun</li>
+            <li><b>Gas bumi:</b> 49–52 tahun</li>
+          </ul>
+          <h3>💡 Manfaat Energi Fosil</h3>
+          <ul>
+            <li>Bahan bakar transportasi (bensin, solar) 🚗</li>
+            <li>Gas elpiji untuk memasak 🍳</li>
+            <li>Pembangkit listrik tenaga uap (PLTU) ⚡</li>
+            <li>Bahan baku plastik, aspal, oli, cat 🎨</li>
+          </ul>
+          <h3>⚠️ Kelemahan Energi Fosil</h3>
+          <ul>
+            <li>Sulit diperbarui / berpotensi habis.</li>
+            <li>Menghasilkan gas CO₂ penyebab perubahan iklim.</li>
+            <li>Aktivitas pertambangan merusak lingkungan.</li>
+          </ul>
+          <div class="fact">💡 <b>Fakta Seru:</b> Minyak bumi diolah di kilang dengan pemanasan bertingkat untuk menghasilkan elpiji, bensin, nafta, avtur, minyak tanah, diesel, oli, aspal, dan bahan bakar kapal.</div>
+        `
+      },
+      { title:"Energi Terbarukan", icon:"☀️",
+        html:`
+          <p class="lead">Energi fosil berdampak buruk bagi lingkungan. Manusia mulai mencari <b>energi alternatif</b> yang dapat diperbarui dan ketersediaannya tidak terbatas.</p>
+          <h3>♻️ Apa Itu Energi Terbarukan?</h3>
+          <p>Energi terbarukan adalah energi pengganti energi fosil, berasal dari alam, dan tidak akan habis. Kelebihannya: <b>gratis</b> (angin, matahari, ombak), meski teknologinya tetap butuh biaya.</p>
+          <h3>🌱 Sumber Energi Terbarukan</h3>
+          <ul>
+            <li><b>Sinar Matahari ☀️</b> — diubah menjadi listrik dengan panel surya.</li>
+            <li><b>Angin 💨</b> — memutar kincir angin, memutar generator.</li>
+            <li><b>Arus Air 💧</b> — air terjun deras memutar turbin (PLTA).</li>
+            <li><b>Energi Laut 🌊</b> — gelombang dan pasang surut air laut.</li>
+            <li><b>Panas Bumi 🌋</b> — uap panas dari dalam bumi memutar turbin.</li>
+            <li><b>Biomassa 🌿</b> — bahan bakar dari limbah tumbuhan.</li>
+            <li><b>Hidrogen H₂</b> — gas ringan pengganti gas alam.</li>
+          </ul>
+          <h3>⚡ Cara Kerja Pembangkit Listrik</h3>
+          <p>Prinsipnya: sumber energi memutar <b>turbin</b> → turbin memutar <b>generator</b> → generator menghasilkan listrik yang disalurkan ke rumah-rumah.</p>
+          <div class="fact">💡 <b>Fakta Seru:</b> Di Nusa Penida, Bali, 24% pasokan listrik berasal dari PLTS. PLTS terapung Cirata di Jawa Barat adalah PLTS terbesar ke-3 di dunia!</div>
+        `
+      },
+      { title:"Energi Bersih", icon:"🌿",
+        html:`
+          <p class="lead">Mayoritas energi terbarukan adalah <b>energi bersih</b> dan ramah lingkungan. Contoh: Matahari dan angin — tidak menghasilkan polusi saat digunakan.</p>
+          <h3>💚 Kelebihan Energi Bersih</h3>
+          <ul>
+            <li>Tidak menghasilkan polusi udara 🌫️❌</li>
+            <li>Tidak habis / tidak terbatas ♻️</li>
+            <li>Membantu mencegah perubahan iklim 🌍</li>
+            <li>Ramah lingkungan 🌱</li>
+          </ul>
+          <h3>⚠️ Tantangan Energi Terbarukan</h3>
+          <ul>
+            <li>Bergantung pada kondisi alam (cuaca, musim, angin).</li>
+            <li>Biaya penelitian dan pembangunan teknologi besar.</li>
+            <li>Butuh lahan dan waktu pembangunan lama.</li>
+            <li>Pembuatan teknologi (baterai) tetap butuh pertambangan.</li>
+          </ul>
+          <h3>🌍 Kaitan dengan Perubahan Iklim</h3>
+          <p>Penggunaan energi fosil menghasilkan gas <b>CO₂</b> penyebab efek rumah kaca dan perubahan iklim. Beralih ke energi bersih mengurangi emisi gas rumah kaca.</p>
+          <h3>💡 Aksi Kecil Hemat Energi</h3>
+          <ul>
+            <li>Matikan lampu dan alat listrik saat tidak digunakan 💡</li>
+            <li>Gunakan sepeda atau berjalan kaki 🚲</li>
+            <li>Gunakan transportasi umum 🚌</li>
+            <li>Manfaatkan sinar matahari alami di siang hari ☀️</li>
+            <li>Hemat air 💧</li>
+          </ul>
+          <div class="tip">🌟 <b>Ayo mulai!</b> Perubahan besar dimulai dari langkah kecil!</div>
+        `
+      }
+    ],
+    quiz:[
+      { q:"Energi fosil berasal dari ...", opts:["Tumbuhan yang masih hidup","Makhluk hidup yang mati dan tertimbun jutaan tahun","Air laut","Angin dan matahari"], ans:1, exp:"Energi fosil berasal dari makhluk hidup yang mati, tertimbun tanah, pasir, dan batuan sedimen selama jutaan tahun." },
+      { q:"Berikut yang termasuk energi fosil adalah ...", opts:["Angin, matahari, air","Minyak bumi, batu bara, gas alam","Biomassa, biogas","Panas bumi, ombak"], ans:1, exp:"Tiga jenis energi fosil utama: minyak bumi, batu bara, dan gas alam." },
+      { q:"Energi fosil disebut energi tak terbarukan karena ...", opts:["Harganya mahal","Sulit didapat","Membutuhkan waktu jutaan tahun untuk terbentuk kembali","Hanya ada di Indonesia"], ans:2, exp:"Energi fosil membutuhkan waktu jutaan tahun untuk terbentuk kembali, sehingga ketersediaannya terbatas." },
+      { q:"Gas yang dihasilkan dari pembakaran energi fosil dan menyebabkan efek rumah kaca adalah ...", opts:["Oksigen (O₂)","Karbon dioksida (CO₂)","Nitrogen (N₂)","Helium (He)"], ans:1, exp:"Pembakaran energi fosil menghasilkan CO₂ yang menyebabkan efek rumah kaca dan perubahan iklim." },
+      { q:"Sumber energi terbarukan yang memanfaatkan panas dari dalam bumi disebut ...", opts:["Biomassa","Panas bumi","Angin","Hidrogen"], ans:1, exp:"Panas bumi (geotermal) memanfaatkan uap panas dari dalam bumi untuk memutar turbin." },
+      { q:"Prinsip kerja pembangkit listrik adalah ...", opts:["Air dipanaskan menjadi uap","Sumber energi memutar turbin → turbin memutar generator → listrik","Generator memutar turbin → listrik","Batu bara langsung menghasilkan listrik"], ans:1, exp:"Sumber energi memutar turbin, turbin memutar generator, dan generator menghasilkan listrik." },
+      { q:"Energi berikut yang termasuk energi bersih adalah ...", opts:["Batu bara","Minyak bumi","Sinar matahari","Gas alam"], ans:2, exp:"Sinar matahari tidak menghasilkan polusi saat digunakan untuk membangkitkan listrik." },
+      { q:"Salah satu kelemahan energi terbarukan adalah ...", opts:["Harganya gratis selamanya","Bergantung pada kondisi alam","Tidak bisa dijadikan listrik","Sumbernya terbatas"], ans:1, exp:"Energi terbarukan sangat bergantung pada kondisi alam seperti cuaca, angin, dan musim." },
+      { q:"Fungsi hutan dalam kaitannya dengan polusi dari energi fosil adalah ...", opts:["Menyerap CO₂ dan menghasilkan oksigen","Menambah polusi udara","Menyebabkan banjir","Menghasilkan batu bara"], ans:0, exp:"Hutan menyerap CO₂ dan menghasilkan oksigen, membantu mengurangi polusi udara." },
+      { q:"Aksi kecil untuk menghemat energi di rumah adalah ...", opts:["Menyalakan semua lampu","Membiarkan TV menyala","Mematikan lampu saat tidak digunakan","Menggunakan AC terus-menerus"], ans:2, exp:"Mematikan lampu dan alat listrik saat tidak digunakan adalah cara sederhana menghemat energi." }
+    ]
+  },
+  6: {
+    title:"MENGEMBARA DI JAGAT RAYA", emoji:"🪐", color:"c6",
+    subs:[
+      { title:"Bumi & Bulan", icon:"🌞",
+        html:`
+          <p class="lead">Setiap hari kita melihat Matahari di siang hari dan Bulan di malam hari. Mengapa mereka selalu terbit dan tenggelam di arah yang sama?</p>
+          <h3>🌌 Jagat Raya</h3>
+          <p><b>Jagat raya (alam semesta)</b> adalah ruang yang sangat luas yang batasnya belum diketahui. Di dalamnya ada <b>jutaan galaksi</b>, salah satunya Galaksi Bimasakti.</p>
+          <h3>⭐ Matahari, Bintang di Tata Surya</h3>
+          <p><b>Matahari</b> disebut <b>bintang</b> karena merupakan bola gas raksasa yang sangat panas dan dapat memancarkan cahaya sendiri. Suhu intinya mencapai <b>15 juta °C</b>. Diameter Matahari 1.391.900 km.</p>
+          <h3>🌍 Bumi, Planet Kehidupan</h3>
+          <p><b>Bumi</b> adalah satu dari 8 planet di tata surya. <b>Planet</b> adalah benda langit yang tidak dapat menghasilkan cahaya sendiri. Bumi memiliki air, oksigen, dan suhu yang mendukung kehidupan.</p>
+          <h3>🌙 Bulan, Satelit Alami Bumi</h3>
+          <p><b>Bulan</b> adalah satu-satunya <b>satelit alami</b> Bumi yang mengorbit Bumi.</p>
+          <h3>🔄 Rotasi dan Revolusi</h3>
+          <ul>
+            <li><b>Rotasi</b> — perputaran Bumi pada porosnya, 23 jam 56 menit. Menyebabkan siang-malam dan perbedaan waktu.</li>
+            <li><b>Revolusi</b> — perputaran Bumi mengelilingi Matahari, 365,25 hari. Menyebabkan pergantian musim.</li>
+          </ul>
+          <div class="fact">💡 <b>Fakta Seru:</b> Kita tidak merasakan gerakan Bumi karena kecepatannya konstan — sama seperti saat naik kendaraan yang melaju mulus.</div>
+        `
+      },
+      { title:"Rotasi & Revolusi", icon:"🌏",
+        html:`
+          <p class="lead">Gerakan Bumi (rotasi dan revolusi) sangat memengaruhi kehidupan manusia sehari-hari.</p>
+          <div class="ilustrasi">${svgRotasiRevolusi()}<div class="caption">Gambar 6.1 Rotasi Bumi pada porosnya (kiri) dan Revolusi Bumi mengelilingi Matahari (kanan)</div></div>
+          <h3>🔄 Pengaruh Rotasi Bumi</h3>
+          <ul>
+            <li><b>Gerak semu harian Matahari</b> — Matahari seolah berpindah dari Timur ke Barat.</li>
+            <li><b>Terjadinya siang dan malam</b> — bagian Bumi yang menghadap Matahari mengalami siang.</li>
+            <li><b>Perbedaan waktu</b> — Bumi dibagi menjadi 24 zona waktu. Setiap 15° bujur = 1 jam.</li>
+          </ul>
+          <h3>🇮🇩 Zona Waktu di Indonesia</h3>
+          <ul>
+            <li><b>WIB (Waktu Indonesia Barat)</b> — GMT+7 (Sumatra, Jawa, Kalimantan Barat & Tengah)</li>
+            <li><b>WITA (Waktu Indonesia Tengah)</b> — GMT+8 (Bali, NTB, NTT, Kalsel, Kaltim, Kaltara, Sulawesi)</li>
+            <li><b>WIT (Waktu Indonesia Timur)</b> — GMT+9 (Maluku, Papua)</li>
+          </ul>
+          <h3>🌍 Pengaruh Revolusi Bumi</h3>
+          <p>Poros Bumi miring, sehingga tidak semua daerah mendapat sinar Matahari dalam jumlah sama. Inilah yang menyebabkan <b>pergantian musim</b>:</p>
+          <ul>
+            <li><b>Desember</b> — Belahan Selatan musim panas, Utara musim dingin.</li>
+            <li><b>Maret</b> — Utara musim semi, Selatan musim gugur.</li>
+            <li><b>Juni</b> — Belahan Utara musim panas, Selatan musim dingin.</li>
+            <li><b>September</b> — Selatan musim semi, Utara musim gugur.</li>
+          </ul>
+          <p>Negara-negara di khatulistiwa (termasuk Indonesia) hanya mengalami <b>2 musim</b>: kemarau dan hujan.</p>
+          <div class="fact">💡 <b>Fakta Seru:</b> Di Islandia, siang hari bisa mencapai 22 jam! Di Finlandia, malam hari bisa berlangsung hingga 200 hari (Polar Night), memunculkan aurora borealis.</div>
+        `
+      },
+      { title:"Tata Surya", icon:"🚀",
+        html:`
+          <p class="lead">Tata surya adalah sistem yang terdiri dari Matahari sebagai pusat dan benda langit lain yang mengorbitnya.</p>
+          <div class="ilustrasi">${svgTataSurya()}<div class="caption">Gambar 6.2 Delapan planet di tata surya mengelilingi Matahari</div></div>
+          <h3>🪐 Delapan Planet Tata Surya</h3>
+          <p><b>Planet Dalam (bebatuan, ukuran kecil):</b></p>
+          <ul>
+            <li><b>Merkurius</b> — terdekat Matahari, suhu -180°C s.d. 420°C, tidak punya satelit.</li>
+            <li><b>Venus</b> — terpanas, atmosfer CO₂ tebal, tidak punya satelit.</li>
+            <li><b>Bumi</b> — satu-satunya planet berkehidupan, 1 satelit (Bulan).</li>
+            <li><b>Mars</b> — si planet merah, punya 2 satelit, ada gunung tertinggi di tata surya.</li>
+          </ul>
+          <p><b>Planet Luar (gas raksasa, ukuran besar):</b></p>
+          <ul>
+            <li><b>Jupiter</b> — terbesar, 79 satelit.</li>
+            <li><b>Saturnus</b> — punya cincin indah, 82 satelit.</li>
+            <li><b>Uranus</b> — planet gas es, 27 satelit.</li>
+            <li><b>Neptunus</b> — terjauh dari Matahari, 14 satelit.</li>
+          </ul>
+          <h3>☄️ Benda Langit Lainnya</h3>
+          <ul>
+            <li><b>Komet</b> — bola es dan debu yang mengorbit Matahari, ekornya panjang. Komet Halley terlihat setiap 76 tahun.</li>
+            <li><b>Meteor</b> — meteoroid yang terbakar di atmosfer Bumi. Jika mendarat disebut meteorit.</li>
+            <li><b>Asteroid</b> — benda langit sisa pembentuk tata surya, banyak di sabuk asteroid antara Mars dan Jupiter.</li>
+          </ul>
+          <h3>📡 Teknologi Satelit</h3>
+          <ul>
+            <li><b>Satelit komunikasi</b> — siaran TV, telepon, internet.</li>
+            <li><b>Satelit navigasi</b> — peta digital, GPS, aplikasi ojek online.</li>
+            <li><b>Satelit cuaca</b> — memantau pergerakan awan dan prakiraan cuaca.</li>
+          </ul>
+          <div class="fact">💡 <b>Fakta Seru:</b> Satelit pertama di dunia adalah <b>Sputnik 1</b>, diluncurkan Rusia tahun 1957. Sejak itu, penjelajahan luar angkasa terus berkembang!</div>
+        `
+      }
+    ],
+    quiz:[
+      { q:"Matahari disebut bintang karena ...", opts:["Bergerak mengelilingi Bumi","Merupakan bola gas raksasa yang memancarkan cahaya sendiri","Berukuran kecil","Tidak memiliki cahaya"], ans:1, exp:"Matahari disebut bintang karena merupakan bola gas raksasa yang sangat panas dan dapat memancarkan cahaya sendiri." },
+      { q:"Perbedaan utama antara bintang dan planet adalah ...", opts:["Bintang lebih kecil dari planet","Bintang dapat memancarkan cahaya sendiri, planet tidak","Planet lebih panas dari bintang","Planet bergerak, bintang diam"], ans:1, exp:"Bintang dapat memancarkan cahaya sendiri, sedangkan planet tidak — planet hanya memantulkan cahaya." },
+      { q:"Satelit alami Bumi adalah ...", opts:["Matahari","Bulan","Mars","Venus"], ans:1, exp:"Bulan adalah satu-satunya satelit alami Bumi yang mengorbit Bumi." },
+      { q:"Gerakan Bumi berputar pada porosnya disebut ...", opts:["Revolusi","Rotasi","Orbit","Gravitasi"], ans:1, exp:"Rotasi adalah gerakan Bumi berputar pada porosnya, membutuhkan 23 jam 56 menit." },
+      { q:"Waktu yang dibutuhkan Bumi untuk satu kali revolusi adalah ...", opts:["24 jam","30 hari","365,25 hari","12 jam"], ans:2, exp:"Revolusi Bumi mengelilingi Matahari membutuhkan waktu 365,25 hari (1 tahun)." },
+      { q:"Pergantian siang dan malam disebabkan oleh ...", opts:["Revolusi Bumi","Rotasi Bumi","Gerhana","Gravitasi Bulan"], ans:1, exp:"Rotasi Bumi menyebabkan bagian yang menghadap Matahari mengalami siang, yang membelakangi mengalami malam." },
+      { q:"Indonesia terbagi menjadi 3 zona waktu karena ...", opts:["Letak geografisnya di khatulistiwa","Wilayahnya sangat luas dari barat ke timur","Banyaknya pulau","Pengaruh revolusi"], ans:1, exp:"Indonesia membentang luas dari barat ke timur, sehingga terbagi menjadi WIB, WITA, dan WIT." },
+      { q:"Planet terbesar dalam tata surya adalah ...", opts:["Saturnus","Jupiter","Neptunus","Bumi"], ans:1, exp:"Jupiter adalah planet terbesar di tata surya, dengan 79 satelit alami." },
+      { q:"Benda langit yang tersusun dari es dan debu serta memiliki ekor panjang adalah ...", opts:["Meteor","Asteroid","Komet","Satelit"], ans:2, exp:"Komet tersusun dari es dan debu, dan saat mendekati Matahari membentuk ekor panjang. Contoh: Komet Halley." },
+      { q:"Teknologi satelit yang membantu kita menemukan lokasi melalui peta digital adalah satelit ...", opts:["Komunikasi","Navigasi","Cuaca","Militer"], ans:1, exp:"Satelit navigasi membantu mengakses peta digital secara tepat, seperti pada GPS dan aplikasi ojek online." }
+    ]
+  }
+};
+
+/* =========================================================
+   STATE, NAVIGASI, KUIS
+   ========================================================= */
+const state = { bab:null, sub:0 };
+const quiz = { bab:null, idx:0, score:0, locked:false, total:10 };
+const musicPref = {
+  get enabled(){ try{return localStorage.getItem('ipas-music')!=='off';}catch(e){return true;} },
+  set enabled(v){ try{localStorage.setItem('ipas-music', v?'on':'off');}catch(e){} }
+};
+const musicToggleBtn = document.getElementById('musicToggle');
+const musicHint = document.getElementById('musicHint');
+function updateMusicButton(){
+  const on = musicPref.enabled && Music.isPlaying();
+  musicToggleBtn.classList.toggle('music-on', on);
+  musicToggleBtn.textContent = musicPref.enabled ? '🎵' : '🔇';
+  musicToggleBtn.title = musicPref.enabled ? 'Matikan musik' : 'Nyalakan musik';
+  if(musicHint) musicHint.classList.toggle('show', on);
+}
+function tryStartMusic(){ if(!musicPref.enabled) return; Music.start(); updateMusicButton(); }
+function stopMusic(){ Music.stop(); updateMusicButton(); }
+musicToggleBtn.addEventListener('click', () => {
+  const newState = !musicPref.enabled; musicPref.enabled = newState;
+  if(newState){ if(document.getElementById('view-materi').classList.contains('active')) Music.start(); }
+  else { Music.stop(); }
+  updateMusicButton();
+});
+function $(id){ return document.getElementById(id); }
+function showView(id){
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  $(id).classList.add('active');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+function goMenu(){
+  stopMusic();
+  TTS.stop();
+  showView('view-menu');
+}
+
+function renderMenu(){
+  const wrap = $('menuList');
+  wrap.innerHTML = Object.keys(DATA).map((k, i) => {
+    const b = DATA[k];
+    return `
+      <div class="bab-acc ${b.color}" style="animation-delay:${i * 0.07}s" id="bab-acc-${k}">
+        <button class="bab-header" onclick="toggleBab(${k})" aria-expanded="false">
+          <span class="bab-emoji">${b.emoji}</span>
+          <span class="bab-header-text">
+            <span class="bab-label">BAB ${k}</span>
+            <span class="bab-title">${b.title}</span>
+          </span>
+          <span class="bab-toggle">▾</span>
+        </button>
+        <div class="bab-body">
+          <div class="bab-body-inner">
+            <div class="sub-title">Pilih Sub Bab</div>
+            <div class="sub-buttons">
+              ${b.subs.map((s, idx) => `
+                <button class="sub-btn" onclick="openMateri(${k}, ${idx})" title="${s.title}">
+                  <span class="sub-circle">${idx + 1}</span>
+                  <span class="sub-label">${s.title}</span>
+                </button>
+              `).join('')}
+            </div>
+            <div class="quiz-btn-wrap">
+              <button class="quiz-btn" onclick="startQuiz(${k})">✏️ Kerjakan Soal Latihan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleBab(bab){
+  const acc = document.getElementById(`bab-acc-${bab}`);
+  const isOpen = acc.classList.contains('open');
+  document.querySelectorAll('.bab-acc').forEach(el => {
+    el.classList.remove('open');
+    const h = el.querySelector('.bab-header');
+    if(h) h.setAttribute('aria-expanded', 'false');
+  });
+  if(!isOpen){
+    acc.classList.add('open');
+    acc.querySelector('.bab-header').setAttribute('aria-expanded', 'true');
+    setTimeout(() => { acc.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 100);
+  }
+}
+
+function openMateri(bab, subIndex){
+  state.bab = bab;
+  state.sub = (typeof subIndex === 'number') ? subIndex : 0;
+  renderSub();
+  showView('view-materi');
+  tryStartMusic();
+}
+
+function renderSub(){
+  const b = DATA[state.bab], s = b.subs[state.sub], total = b.subs.length;
+  const persen = Math.round(((state.sub + 1) / total) * 100);
+  $('materiBabTitle').textContent = `BAB ${state.bab} · ${b.title}`;
+  $('materiIcon').textContent = s.icon;
+  $('materiLabel').textContent = `Sub Bab ${state.sub + 1} dari ${total}`;
+  $('materiTitle').textContent = s.title;
+  $('materiBody').innerHTML = s.html;
+  $('materiProgressText').textContent = `Sub Bab ${state.sub + 1} dari ${total}`;
+  $('materiProgressPercent').textContent = persen + '%';
+  $('materiProgressFill').style.width = persen + '%';
+  $('prevBtn').disabled = state.sub === 0;
+  $('nextSubBtn').textContent = (state.sub === total - 1) ? '✅ Selesai, Latihan Soal' : 'Selanjutnya →';
+  const body = $('materiBody');
+  body.style.animation = 'none'; void body.offsetWidth;
+  body.style.animation = 'fadeUp .45s cubic-bezier(.22,1,.36,1)';
+  ttsResetUI();
+}
+
+function prevSub(){ if(state.sub > 0){ state.sub--; renderSub(); window.scrollTo({ top:0, behavior:'smooth' }); } }
+function nextSub(){
+  const total = DATA[state.bab].subs.length;
+  if(state.sub < total - 1){ state.sub++; renderSub(); window.scrollTo({ top:0, behavior:'smooth' }); }
+  else startQuiz(state.bab);
+}
+
+function startQuiz(bab){
+  stopMusic();
+  TTS.stop();
+  quiz.bab = bab; quiz.idx = 0; quiz.score = 0; quiz.locked = false;
+  quiz.total = DATA[bab].quiz.length;
+  $('kuisTitle').textContent = `BAB ${bab} · Soal Latihan`;
+  renderQuestion(); showView('view-kuis');
+}
+
+function renderQuestion(){
+  const list = DATA[quiz.bab].quiz, q = list[quiz.idx];
+  quiz.locked = false;
+  $('qNumber').textContent = `SOAL ${quiz.idx + 1} DARI ${quiz.total}`;
+  $('qText').textContent = q.q;
+  const letters = ['A','B','C','D'];
+  $('quizOptions').innerHTML = q.opts.map((opt, i) => `
+    <button class="option" data-i="${i}" onclick="chooseOption(${i})">
+      <span class="opt-letter">${letters[i]}</span>
+      <span class="opt-text">${opt}</span>
+    </button>`).join('');
+  const persen = Math.round((quiz.idx / quiz.total) * 100);
+  $('kuisProgressText').textContent = `Soal ${quiz.idx + 1} dari ${quiz.total}`;
+  $('kuisScoreText').textContent = `Skor: ${quiz.score}`;
+  $('kuisProgressFill').style.width = persen + '%';
+  const fb = $('feedback'); fb.className = 'feedback'; fb.innerHTML = '';
+  $('nextBtn').style.display = 'none';
+  $('nextBtn').textContent = (quiz.idx === quiz.total - 1) ? 'Lihat Hasil 🎯' : 'Soal Berikutnya →';
+  const card = document.querySelector('.quiz-card');
+  card.style.animation = 'none'; void card.offsetWidth;
+  card.style.animation = 'fadeUp .4s cubic-bezier(.22,1,.36,1)';
+}
+
+function chooseOption(i){
+  if(quiz.locked) return;
+  quiz.locked = true;
+  const q = DATA[quiz.bab].quiz[quiz.idx];
+  const buttons = document.querySelectorAll('#quizOptions .option');
+  const letters = ['A','B','C','D'];
+  const benar = (i === q.ans);
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+    if(idx === q.ans) btn.classList.add('correct');
+    else if(idx === i) btn.classList.add('wrong');
+  });
+  if(benar) quiz.score++;
+  const fb = $('feedback');
+  if(benar){ fb.className = 'feedback show ok'; fb.innerHTML = `<span class="fb-title">✅ Jawaban Benar!</span>${q.exp}`; }
+  else { fb.className = 'feedback show no'; fb.innerHTML = `<span class="fb-title">❌ Belum tepat. Jawaban yang benar: ${letters[q.ans]}.</span>${q.exp}`; }
+  $('kuisScoreText').textContent = `Skor: ${quiz.score}`;
+  const persen = Math.round(((quiz.idx + 1) / quiz.total) * 100);
+  $('kuisProgressFill').style.width = persen + '%';
+  $('nextBtn').style.display = 'inline-flex';
+}
+
+function nextQuestion(){
+  if(quiz.idx < quiz.total - 1){ quiz.idx++; renderQuestion(); window.scrollTo({ top:0, behavior:'smooth' }); }
+  else showResult();
+}
+
+function showResult(){
+  stopMusic();
+  TTS.stop();
+  const skor = quiz.score, total = quiz.total;
+  const persen = Math.round((skor / total) * 100);
+  $('hasilScore').textContent = `${skor}/${total}`;
+  let emoji = '🎉', judul = 'Luar Biasa!', pesan = '';
+  if(persen === 100){ emoji='🏆'; judul='Sempurna!'; pesan='Kamu menjawab semua soal dengan benar. Pertahankan ya!'; }
+  else if(persen >= 80){ emoji='🌟'; judul='Hebat Sekali!'; pesan='Pemahamanmu sudah sangat baik. Sedikit lagi menuju sempurna!'; }
+  else if(persen >= 60){ emoji='👍'; judul='Bagus!'; pesan='Kamu sudah cukup paham. Baca kembali materi yang masih sulit!'; }
+  else if(persen >= 40){ emoji='💪'; judul='Semangat!'; pesan='Ayo pelajari lagi materinya, lalu ulangi kuis ini!'; }
+  else { emoji='📚'; judul='Jangan Menyerah!'; pesan='Baca materi sekali lagi dengan teliti, lalu coba kuis ini kembali.'; }
+  $('hasilEmoji').textContent = emoji;
+  $('hasilTitle').textContent = judul;
+  $('hasilMsg').textContent = pesan;
+  showView('view-hasil');
+}
+
+function repeatQuiz(){ startQuiz(quiz.bab); }
+const themeBtn = $('themeToggle');
+function applyTheme(dark){
+  document.body.classList.toggle('dark', dark);
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+  try { localStorage.setItem('ipas-theme', dark ? 'dark' : 'light'); } catch(e){}
+}
+themeBtn.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark')));
+(function initTheme(){
+  let saved = null;
+  try { saved = localStorage.getItem('ipas-theme'); } catch(e){}
+  if(saved === 'dark') applyTheme(true);
+  else if(saved === 'light') applyTheme(false);
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme(true);
+})();
+
+renderMenu();
+updateMusicButton();
+['click','touchstart','keydown'].forEach(evt => {
+  window.addEventListener(evt, function once(){
+    if(musicPref.enabled && Music.isPlaying()) Music.start();
+    window.removeEventListener(evt, once);
+  }, { once:true, passive:true });
+});
+</script>
+</body>
+</html>
